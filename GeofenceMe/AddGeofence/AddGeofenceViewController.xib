@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddGeofenceViewController" customModule="GeofenceMe" customModuleProvider="target">
+            <connections>
+                <outlet property="mapView" destination="dJa-kt-jqM" id="E37-cX-LLc"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OT-w1-Ujk">
+                    <rect key="frame" x="10" y="742" width="394" height="100"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="0G5-nw-6xC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                    <state key="normal" title="Add geofence"/>
+                    <connections>
+                        <action selector="bottomButtonPressed:" destination="-1" eventType="touchUpInside" id="XdQ-AF-nOh"/>
+                    </connections>
+                </button>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dJa-kt-jqM">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="632"/>
+                </mapView>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UDq-rV-KrN" userLabel="RangeControl">
+                    <rect key="frame" x="20" y="672" width="374" height="51"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="D48-TT-RUb"/>
+                    </constraints>
+                    <segments>
+                        <segment title="5"/>
+                        <segment title="10"/>
+                        <segment title="20"/>
+                    </segments>
+                    <connections>
+                        <action selector="controlChanged:" destination="-1" eventType="valueChanged" id="oWb-gh-BGr"/>
+                    </connections>
+                </segmentedControl>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area Range(in kilometers)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPY-jv-l3j">
+                    <rect key="frame" x="20" y="640" width="175.5" height="17"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UDq-rV-KrN" secondAttribute="trailing" constant="20" id="0zH-uL-Rtn"/>
+                <constraint firstItem="dJa-kt-jqM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="1fY-ny-vdr"/>
+                <constraint firstItem="pPY-jv-l3j" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="1yb-SB-q0z"/>
+                <constraint firstItem="dJa-kt-jqM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4uZ-dE-6lK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dJa-kt-jqM" secondAttribute="trailing" id="EJv-vT-L0G"/>
+                <constraint firstItem="UDq-rV-KrN" firstAttribute="top" secondItem="pPY-jv-l3j" secondAttribute="bottom" constant="15" id="Kdc-rO-22k"/>
+                <constraint firstItem="2OT-w1-Ujk" firstAttribute="top" secondItem="UDq-rV-KrN" secondAttribute="bottom" constant="20" id="f0n-VL-Z7o"/>
+                <constraint firstItem="2OT-w1-Ujk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="gSc-6G-mGS"/>
+                <constraint firstItem="pPY-jv-l3j" firstAttribute="top" secondItem="dJa-kt-jqM" secondAttribute="bottom" constant="8" symbolic="YES" id="hE1-1h-9gm"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2OT-w1-Ujk" secondAttribute="trailing" constant="10" id="l21-ip-1VY"/>
+                <constraint firstItem="UDq-rV-KrN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="nru-XV-0k7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="2OT-w1-Ujk" secondAttribute="bottom" constant="20" id="yfm-GJ-vja"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <point key="canvasLocation" x="139" y="122"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

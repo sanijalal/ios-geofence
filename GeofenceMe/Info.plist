@@ -20,6 +20,14 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Your location is used to manage creation of new geofences via the application and to determine if the user is inside or outside the geofence</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Your location is used to manage creation of new geofences via the application and to determine if the user is inside or outside the geofence</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Your location is used to manage creation of new geofences via the application and to determine if the user is inside or outside the geofence</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location is used to manage creation of new geofences via the application and to determine if the user is inside or outside the geofence</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
