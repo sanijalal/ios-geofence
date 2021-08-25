@@ -9,22 +9,33 @@ import Foundation
 import MapKit
 
 class AddGeofenceViewPresenter {
-    var latitude: Double
-    var longitude: Double
-    var currentFenceRange: CLLocationDistance = 50
-    var currentMapRange: CLLocationDistance = 300
+    var latitude: Double {
+        viewModel.latitude
+    }
     
+    var longitude: Double {
+        viewModel.longitude
+    }
+    
+    var currentFenceRange: CLLocationDistance {
+        viewModel.currentFenceRange
+    }
+    
+    var currentMapRange: CLLocationDistance {
+        viewModel.currentFenceRange + 250
+    }
+    
+    var viewModel: AddGeofenceViewModel
     weak var delegate: AddGeofenceViewPresenterDelegate?
+    var geofenceService: GeofenceStorageProviding
     
-    init (latitude: Double, longitude: Double) {
-        self.latitude = 21.282778
-        self.longitude = -157.829444
+    init (geofenceService: GeofenceStorageProviding = GeofenceStorageService(), viewModel: AddGeofenceViewModel = AddGeofenceViewModel()) {
+        self.geofenceService = geofenceService
+        self.viewModel = viewModel
     }
     
     func segmentSelected(index: Int) {
-        currentFenceRange = CLLocationDistance((index + 1) * 50)
-        currentMapRange = currentFenceRange + 250
-        
+        viewModel.currentFenceRange = CLLocationDistance((index + 1) * 50)
         delegate?.fenceRangeChanged()
     }
     
@@ -32,4 +43,8 @@ class AddGeofenceViewPresenter {
         delegate?.locationChanged()
     }
     
+    func saveGeofence() {
+        let geofence = GeofenceInfo(latitude: latitude, longitude: longitude, radius: Int(currentFenceRange))
+        geofenceService.saveGeofence(geofence)
+    }
 }

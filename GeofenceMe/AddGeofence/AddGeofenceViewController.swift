@@ -15,7 +15,7 @@ class AddGeofenceViewController: UIViewController {
     var presenter: AddGeofenceViewPresenter
     
     required init?(coder: NSCoder) {
-        presenter = AddGeofenceViewPresenter(latitude: 21.282778, longitude: -157.829444)
+        presenter = AddGeofenceViewPresenter()
         super.init(coder: coder)
     }
     
@@ -80,7 +80,7 @@ class AddGeofenceViewController: UIViewController {
     }
     
     @IBAction func bottomButtonPressed(_ sender: Any) {
-
+        presenter.saveGeofence()
     }
     
 }
