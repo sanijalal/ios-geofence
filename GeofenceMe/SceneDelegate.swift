@@ -18,8 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        let presenter = AddGeofenceViewPresenter()
-        let vc = AddGeofenceViewController.init(presenter: presenter)
+        let presenter = GeofenceViewPresenter()
+        let vc = GeofenceViewController(presenter: presenter)
         window?.rootViewController = vc
     }
 

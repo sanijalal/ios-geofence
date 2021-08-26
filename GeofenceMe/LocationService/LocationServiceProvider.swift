@@ -11,6 +11,14 @@ import CoreLocation
 class LocationServiceProvider: LocationServiceProviding {
     weak var delegate: LocationServiceDelegate?
     
+    func startLocationDetection() {
+        
+    }
+    
+    func stopLocationDetection() {
+        
+    }
+
     func requestLocationPermission() {
         delegate?.authorisationStatusUpdated(.authorizedAlways)
     }

@@ -12,4 +12,5 @@ struct GeofenceInfo: Codable {
     let longitude: Double
     
     let radius: Int
+    var ssid: String? = nil
 }

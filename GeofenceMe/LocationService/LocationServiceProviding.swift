@@ -11,4 +11,6 @@ import CoreLocation
 protocol LocationServiceProviding {
     func requestLocationPermission()
     func getCurrentAuthorisationState() -> CLAuthorizationStatus
+    func startLocationDetection()
+    func stopLocationDetection()
 }

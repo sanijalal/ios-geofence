@@ -18,8 +18,6 @@
 		22879EC626D4AFC800682651 /* LocationServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22879EC526D4AFC800682651 /* LocationServiceProviding.swift */; };
 		22879EC826D4B03000682651 /* LocationServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22879EC726D4B03000682651 /* LocationServiceProvider.swift */; };
 		22879ECA26D4B07400682651 /* LocationServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22879EC926D4B07400682651 /* LocationServiceDelegate.swift */; };
-		22879ECF26D4BE1200682651 /* NoGeofenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22879ECD26D4BE1200682651 /* NoGeofenceViewController.swift */; };
-		22879ED026D4BE1200682651 /* NoGeofenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22879ECE26D4BE1200682651 /* NoGeofenceViewController.xib */; };
 		22879ED326D4C66100682651 /* AddGeofenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22879ED126D4C66100682651 /* AddGeofenceViewController.swift */; };
 		22879ED426D4C66100682651 /* AddGeofenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22879ED226D4C66100682651 /* AddGeofenceViewController.xib */; };
 		22879ED726D5EF6200682651 /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22879ED626D5EF6200682651 /* MapPin.swift */; };
@@ -32,6 +30,12 @@
 		22879EE626D62CED00682651 /* GeofenceStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22879EE526D62CED00682651 /* GeofenceStorageMock.swift */; };
 		22879EE826D62DD500682651 /* AddGeofenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22879EE726D62DD500682651 /* AddGeofenceViewModel.swift */; };
 		22879EEA26D6308900682651 /* GeofenceStorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22879EE926D6308900682651 /* GeofenceStorageServiceTests.swift */; };
+		22879EED26D634F400682651 /* GeofenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22879EEB26D634F400682651 /* GeofenceViewController.swift */; };
+		22879EEE26D634F400682651 /* GeofenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22879EEC26D634F400682651 /* GeofenceViewController.xib */; };
+		22879EF126D6351400682651 /* GeofenceViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22879EF026D6351400682651 /* GeofenceViewPresenter.swift */; };
+		22879EF326D635A100682651 /* GeofenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22879EF226D635A100682651 /* GeofenceViewModel.swift */; };
+		22879EF526D7815400682651 /* GeofenceCheckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22879EF426D7815400682651 /* GeofenceCheckService.swift */; };
+		22879EF726D7891600682651 /* WifiDetectorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22879EF626D7891600682651 /* WifiDetectorService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,8 +73,6 @@
 		22879EC526D4AFC800682651 /* LocationServiceProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceProviding.swift; sourceTree = "<group>"; };
 		22879EC726D4B03000682651 /* LocationServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceProvider.swift; sourceTree = "<group>"; };
 		22879EC926D4B07400682651 /* LocationServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceDelegate.swift; sourceTree = "<group>"; };
-		22879ECD26D4BE1200682651 /* NoGeofenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoGeofenceViewController.swift; sourceTree = "<group>"; };
-		22879ECE26D4BE1200682651 /* NoGeofenceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoGeofenceViewController.xib; sourceTree = "<group>"; };
 		22879ED126D4C66100682651 /* AddGeofenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGeofenceViewController.swift; sourceTree = "<group>"; };
 		22879ED226D4C66100682651 /* AddGeofenceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddGeofenceViewController.xib; sourceTree = "<group>"; };
 		22879ED626D5EF6200682651 /* MapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
@@ -83,6 +85,12 @@
 		22879EE526D62CED00682651 /* GeofenceStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceStorageMock.swift; sourceTree = "<group>"; };
 		22879EE726D62DD500682651 /* AddGeofenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGeofenceViewModel.swift; sourceTree = "<group>"; };
 		22879EE926D6308900682651 /* GeofenceStorageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceStorageServiceTests.swift; sourceTree = "<group>"; };
+		22879EEB26D634F400682651 /* GeofenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceViewController.swift; sourceTree = "<group>"; };
+		22879EEC26D634F400682651 /* GeofenceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeofenceViewController.xib; sourceTree = "<group>"; };
+		22879EF026D6351400682651 /* GeofenceViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceViewPresenter.swift; sourceTree = "<group>"; };
+		22879EF226D635A100682651 /* GeofenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceViewModel.swift; sourceTree = "<group>"; };
+		22879EF426D7815400682651 /* GeofenceCheckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceCheckService.swift; sourceTree = "<group>"; };
+		22879EF626D7891600682651 /* WifiDetectorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiDetectorService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,10 +141,11 @@
 		22879E8E26D3CB1600682651 /* GeofenceMe */ = {
 			isa = PBXGroup;
 			children = (
+				22879EF826D7891E00682651 /* WifiDetector */,
+				22879EEF26D634FA00682651 /* GeofenceView */,
 				22879EDC26D619B300682651 /* GeofenceService */,
 				22879ED526D5EF4B00682651 /* MapView */,
 				22879ECC26D4BD7E00682651 /* AddGeofence */,
-				22879ECB26D4BD5400682651 /* NoGeofence */,
 				22879EC426D4AFB200682651 /* LocationService */,
 				22879EBF26D3CF5E00682651 /* WelcomeScreen */,
 				22879E8F26D3CB1600682651 /* AppDelegate.swift */,
@@ -188,15 +197,6 @@
 			path = LocationService;
 			sourceTree = "<group>";
 		};
-		22879ECB26D4BD5400682651 /* NoGeofence */ = {
-			isa = PBXGroup;
-			children = (
-				22879ECD26D4BE1200682651 /* NoGeofenceViewController.swift */,
-				22879ECE26D4BE1200682651 /* NoGeofenceViewController.xib */,
-			);
-			path = NoGeofence;
-			sourceTree = "<group>";
-		};
 		22879ECC26D4BD7E00682651 /* AddGeofence */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,8 +223,28 @@
 				22879EDD26D619F000682651 /* GeofenceStorageService.swift */,
 				22879EDF26D61A2800682651 /* GeofenceStorageProviding.swift */,
 				22879EE126D61A4F00682651 /* GeofenceInfo.swift */,
+				22879EF426D7815400682651 /* GeofenceCheckService.swift */,
 			);
 			path = GeofenceService;
+			sourceTree = "<group>";
+		};
+		22879EEF26D634FA00682651 /* GeofenceView */ = {
+			isa = PBXGroup;
+			children = (
+				22879EEB26D634F400682651 /* GeofenceViewController.swift */,
+				22879EEC26D634F400682651 /* GeofenceViewController.xib */,
+				22879EF026D6351400682651 /* GeofenceViewPresenter.swift */,
+				22879EF226D635A100682651 /* GeofenceViewModel.swift */,
+			);
+			path = GeofenceView;
+			sourceTree = "<group>";
+		};
+		22879EF826D7891E00682651 /* WifiDetector */ = {
+			isa = PBXGroup;
+			children = (
+				22879EF626D7891600682651 /* WifiDetectorService.swift */,
+			);
+			path = WifiDetector;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,8 +351,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				22879ED426D4C66100682651 /* AddGeofenceViewController.xib in Resources */,
+				22879EEE26D634F400682651 /* GeofenceViewController.xib in Resources */,
 				22879E9C26D3CB1800682651 /* LaunchScreen.storyboard in Resources */,
-				22879ED026D4BE1200682651 /* NoGeofenceViewController.xib in Resources */,
 				22879E9926D3CB1800682651 /* Assets.xcassets in Resources */,
 				22879E9726D3CB1600682651 /* Main.storyboard in Resources */,
 			);
@@ -359,12 +379,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22879EF326D635A100682651 /* GeofenceViewModel.swift in Sources */,
+				22879EF526D7815400682651 /* GeofenceCheckService.swift in Sources */,
 				22879EE226D61A4F00682651 /* GeofenceInfo.swift in Sources */,
 				22879EDB26D612F000682651 /* AddGeofenceViewPresenterDelegate.swift in Sources */,
+				22879EF126D6351400682651 /* GeofenceViewPresenter.swift in Sources */,
+				22879EED26D634F400682651 /* GeofenceViewController.swift in Sources */,
 				22879EDE26D619F000682651 /* GeofenceStorageService.swift in Sources */,
 				22879EC326D4AECC00682651 /* WelcomeViewPresenter.swift in Sources */,
 				22879ED326D4C66100682651 /* AddGeofenceViewController.swift in Sources */,
-				22879ECF26D4BE1200682651 /* NoGeofenceViewController.swift in Sources */,
 				22879EE826D62DD500682651 /* AddGeofenceViewModel.swift in Sources */,
 				22879E9426D3CB1600682651 /* WelcomeViewController.swift in Sources */,
 				22879E9026D3CB1600682651 /* AppDelegate.swift in Sources */,
@@ -374,6 +397,7 @@
 				22879ED926D6124D00682651 /* AddGeofenceViewPresenter.swift in Sources */,
 				22879EC626D4AFC800682651 /* LocationServiceProviding.swift in Sources */,
 				22879EE026D61A2800682651 /* GeofenceStorageProviding.swift in Sources */,
+				22879EF726D7891600682651 /* WifiDetectorService.swift in Sources */,
 				22879E9226D3CB1600682651 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
