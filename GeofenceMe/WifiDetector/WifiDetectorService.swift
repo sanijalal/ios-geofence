@@ -11,11 +11,10 @@ import NetworkExtension
 
 class WifiDetectorService {
     func getSSIDName(callback: @escaping ( (String?) -> Void )) {
-        NEHotspotNetwork.fetchCurrent { network in
-            print("Hotspot Network fetched!")
-            print(network?.bssid)
-            print(network?.isSecure)
-            callback(nil)
-        }
+//        NEHotspotNetwork.fetchCurrent { network in
+//            callback(network?.ssid)
+//        }
+        callback(nil)
+        // This needs to be tested on actual device with entitlement.
     }
 }

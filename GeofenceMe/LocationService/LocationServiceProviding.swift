@@ -13,4 +13,6 @@ protocol LocationServiceProviding {
     func getCurrentAuthorisationState() -> CLAuthorizationStatus
     func startLocationDetection()
     func stopLocationDetection()
+    
+    var delegate: LocationServiceDelegate? { get set }
 }

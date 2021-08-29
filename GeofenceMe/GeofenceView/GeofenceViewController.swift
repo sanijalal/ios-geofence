@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class GeofenceViewController: UIViewController {
     var presenter: GeofenceViewPresenter
@@ -15,9 +16,12 @@ class GeofenceViewController: UIViewController {
     @IBOutlet weak var wifiLabel: UILabel!
     @IBOutlet weak var bottomButton: UIButton!
     
+    @IBOutlet weak var mapView: MKMapView!
+    
     init(presenter: GeofenceViewPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
+        self.presenter.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -27,16 +31,71 @@ class GeofenceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         updateView()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.retrieveGeofenceInfo()
+        updateView()
+    }
+    
     func updateView() {
         self.geofenceLabel.text = presenter.geofenceLabelString
         self.insideOutsideLabel.text = presenter.insideOutsideLabelString
         self.wifiLabel.text = presenter.wifiLabelString
+        self.bottomButton.isHidden = !presenter.showBottomButton
+        
+        updateMapView(geofenceInfo: presenter.geofenceInfo, latitude: presenter.latitude, longitude: presenter.longitude)
+    }
+    
+    private func updateMapView(geofenceInfo: GeofenceInfo?, latitude: Double, longitude: Double) {
+        let overlays = mapView.overlays
+        mapView.removeOverlays(overlays)
+        
+        let annotations = mapView.annotations
+        mapView.removeAnnotations(annotations)
+        
+        if let geofenceInfo = geofenceInfo {
+            let circle = MKCircle(center: CLLocationCoordinate2D(latitude: geofenceInfo.latitude, longitude: geofenceInfo.longitude), radius: CLLocationDistance(geofenceInfo.radius))
+            mapView.addOverlay(circle)
+        }
+        
+        let annotation = MapPin(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+        mapView.addAnnotation(annotation)
+        
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),
+                                        latitudinalMeters: 2000,
+                                        longitudinalMeters: 2000)
+        mapView.setRegion(region, animated: true)
+    }
+    
+    func hackUpdateGeofence() {
+        presenter.retrieveGeofenceInfo()
+        viewNeedsUpdate()
     }
     
     @IBAction func bottomButtonPressed(_ sender: Any) {
+        let presenter = AddGeofenceViewPresenter()
+        let vc = AddGeofenceViewController(presenter: presenter)
+        self.present(vc, animated: true) {
+            
+        }
     }
     
+}
+
+extension GeofenceViewController: GeofenceViewPresenterDelegate {
+    func viewNeedsUpdate() {
+        updateView()
+    }
+}
+
+extension GeofenceViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let circleRenderer = MKCircleRenderer(overlay: overlay)
+        circleRenderer.fillColor = UIColor.init(red: 0, green: 1, blue: 0, alpha: 0.25)
+        return circleRenderer
+    }
 }

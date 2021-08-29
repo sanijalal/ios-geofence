@@ -13,6 +13,7 @@
                 <outlet property="bottomButton" destination="oS4-x8-wx9" id="gXs-nR-63C"/>
                 <outlet property="geofenceLabel" destination="iB0-gU-yc7" id="oWb-8Z-vOm"/>
                 <outlet property="insideOutsideLabel" destination="AJq-Qe-gyt" id="ULe-1h-5AZ"/>
+                <outlet property="mapView" destination="zQ2-QH-Nae" id="cf6-ah-rT4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wifiLabel" destination="zk8-pe-GMq" id="Ah5-pL-3XW"/>
             </connections>
@@ -51,19 +52,26 @@
                         <action selector="bottomButtonPressed:" destination="-1" eventType="touchUpInside" id="6xp-Ok-W72"/>
                     </connections>
                 </button>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zQ2-QH-Nae">
+                    <rect key="frame" x="0.0" y="197" width="414" height="545"/>
+                </mapView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="oS4-x8-wx9" firstAttribute="top" secondItem="zQ2-QH-Nae" secondAttribute="bottom" constant="20" id="8Qy-Oz-mVU"/>
+                <constraint firstItem="zQ2-QH-Nae" firstAttribute="top" secondItem="zk8-pe-GMq" secondAttribute="bottom" constant="20" id="DNH-YN-Fya"/>
                 <constraint firstItem="AJq-Qe-gyt" firstAttribute="top" secondItem="iB0-gU-yc7" secondAttribute="bottom" constant="8" symbolic="YES" id="G0M-RE-cQI"/>
                 <constraint firstItem="zk8-pe-GMq" firstAttribute="top" secondItem="AJq-Qe-gyt" secondAttribute="bottom" constant="8" symbolic="YES" id="HEJ-Hj-5R2"/>
                 <constraint firstItem="zk8-pe-GMq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Isw-3z-m39"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zQ2-QH-Nae" secondAttribute="trailing" id="O5f-qg-3s0"/>
                 <constraint firstItem="oS4-x8-wx9" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="UJ0-Db-kQs"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="AJq-Qe-gyt" secondAttribute="trailing" constant="20" id="Vwe-cK-vca"/>
                 <constraint firstItem="iB0-gU-yc7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="WLg-g0-Kw7"/>
                 <constraint firstItem="oS4-x8-wx9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="acA-za-CyC"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iB0-gU-yc7" secondAttribute="trailing" constant="20" id="e5b-Ph-bbK"/>
                 <constraint firstItem="iB0-gU-yc7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="efD-fj-VKG"/>
+                <constraint firstItem="zQ2-QH-Nae" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="j8f-h4-q6f"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oS4-x8-wx9" secondAttribute="trailing" id="maq-lK-8tQ"/>
                 <constraint firstItem="AJq-Qe-gyt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="phW-3C-Nv9"/>
                 <constraint firstAttribute="trailing" secondItem="zk8-pe-GMq" secondAttribute="trailing" constant="20" id="ypj-R6-fUz"/>

@@ -8,6 +8,7 @@
 import Foundation
 import CoreLocation
 
-protocol LocationServiceDelegate: AnyObject {
+protocol LocationServiceDelegate {
     func authorisationStatusUpdated(_ with: CLAuthorizationStatus)
+    func locationRetrieved(location: CLLocation)
 }

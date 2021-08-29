@@ -10,8 +10,9 @@ import CoreLocation
 
 class GeofenceCheckService {
     class func isGeofenceInLocation(geofence: GeofenceInfo, latitude: Double, longitude: Double) -> Bool {
-        let location = CLLocation(latitude: geofence.latitude, longitude: geofence.longitude)
-        let distance = location.distance(from: CLLocation(latitude: latitude, longitude: longitude))
+        let geofenceLocation = CLLocation(latitude: geofence.latitude, longitude: geofence.longitude)
+        let currentLocation = CLLocation(latitude: latitude, longitude: longitude)
+        let distance = geofenceLocation.distance(from: currentLocation)
         
         return distance <= Double(geofence.radius)
     }

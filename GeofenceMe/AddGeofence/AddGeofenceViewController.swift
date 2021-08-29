@@ -44,6 +44,16 @@ class AddGeofenceViewController: UIViewController {
         annotateAtLocation(latitude: presenter.latitude, longitude: presenter.longitude, radius: presenter.currentFenceRange)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.startLocationUpdate()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presenter.stopLocationUpdate()
+    }
+    
     @IBAction func controlChanged(_ sender: UISegmentedControl) {
         presenter.segmentSelected(index: sender.selectedSegmentIndex)
     }
@@ -81,6 +91,14 @@ class AddGeofenceViewController: UIViewController {
     
     @IBAction func bottomButtonPressed(_ sender: Any) {
         presenter.saveGeofence()
+        
+        if let presentedVC = self.presentingViewController as? GeofenceViewController {
+            presentedVC.hackUpdateGeofence()
+        }
+        
+        self.dismiss(animated: true) {
+            
+        }
     }
     
 }
@@ -95,6 +113,7 @@ extension AddGeofenceViewController: MKMapViewDelegate {
 
 extension AddGeofenceViewController: AddGeofenceViewPresenterDelegate {
     func locationChanged() {
+        showCurrentLocation(latitude: presenter.latitude, longitude: presenter.longitude, distance: presenter.currentMapRange)
         annotateAtLocation(latitude: presenter.latitude, longitude: presenter.longitude, radius: presenter.currentFenceRange)
     }
     

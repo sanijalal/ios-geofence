@@ -6,23 +6,41 @@
 //
 
 import Foundation
+import CoreLocation
 
 class GeofenceViewPresenter {
+    var delegate: GeofenceViewPresenterDelegate?
+    
     private var viewModel: GeofenceViewModel
     private var geofenceService: GeofenceStorageProviding
     private var wifiService: WifiDetectorService
+    private var locationService: LocationServiceProviding
     
     init(viewModel: GeofenceViewModel = GeofenceViewModel(),
          geofenceService: GeofenceStorageProviding = GeofenceStorageService(),
-         wifiService: WifiDetectorService = WifiDetectorService()) {
+         wifiService: WifiDetectorService = WifiDetectorService(),
+         locationService: LocationServiceProviding = LocationServiceProvider()) {
         self.viewModel = viewModel
         
         self.geofenceService = geofenceService
-        self.viewModel.geofenceInfo = geofenceService.getGeofence()
+        self.locationService = locationService
+        
         self.wifiService = wifiService
         self.wifiService.getSSIDName { name in
             self.viewModel.currentSSIDName = name
         }
+        
+        self.locationService.delegate = self
+        startLocationDetection()
+        retrieveGeofenceInfo()
+    }
+    
+    func startLocationDetection() {
+        locationService.startLocationDetection()
+    }
+    
+    func stopLocationDetection() {
+        locationService.stopLocationDetection()
     }
     
     var isInGeofence: Bool {
@@ -33,12 +51,24 @@ class GeofenceViewPresenter {
         return GeofenceCheckService.isGeofenceInLocation(geofence: geofence, latitude: viewModel.latitude, longitude: viewModel.longitude)
     }
     
+    var geofenceInfo: GeofenceInfo? {
+        viewModel.geofenceInfo
+    }
+    
     var isGeofenceAvailable: Bool {
         viewModel.geofenceInfo != nil
     }
     
+    var latitude: Double {
+        viewModel.latitude
+    }
+    
+    var longitude: Double {
+        viewModel.longitude
+    }
+    
     var geofenceLabelString: String {
-        return viewModel.geofenceInfo == nil ? "No geofence configured." : "Geofence configured"
+        viewModel.geofenceInfo == nil ? "No geofence configured." : "Geofence configured"
     }
     
     var insideOutsideLabelString: String {
@@ -52,9 +82,28 @@ class GeofenceViewPresenter {
     }
     
     var wifiLabelString: String {
-        return "Not connected to wifi"
+        "Not connected to wifi"
     }
     
+    var showBottomButton: Bool {
+        !isGeofenceAvailable
+    }
+    
+    func retrieveGeofenceInfo() {
+        viewModel.geofenceInfo = geofenceService.getGeofence()
+    }
+}
+
+extension GeofenceViewPresenter: LocationServiceDelegate {
+    func authorisationStatusUpdated(_ with: CLAuthorizationStatus) {
+        delegate?.viewNeedsUpdate()
+    }
+    
+    func locationRetrieved(location: CLLocation) {
+        viewModel.latitude = location.coordinate.latitude
+        viewModel.longitude = location.coordinate.longitude
+        delegate?.viewNeedsUpdate()
+    }
     
     
 }
