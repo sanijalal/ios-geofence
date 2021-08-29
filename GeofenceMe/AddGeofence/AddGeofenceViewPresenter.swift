@@ -29,6 +29,7 @@ class AddGeofenceViewPresenter {
     weak var delegate: AddGeofenceViewPresenterDelegate?
     var geofenceService: GeofenceStorageProviding
     private var locationService: LocationServiceProviding
+    weak var coordinator: AppCoordinator?
     
     init (geofenceService: GeofenceStorageProviding = GeofenceStorageService(),
           viewModel: AddGeofenceViewModel = AddGeofenceViewModel(),
@@ -61,7 +62,11 @@ class AddGeofenceViewPresenter {
     func saveGeofence() {
         let geofence = GeofenceInfo(latitude: latitude, longitude: longitude, radius: Int(currentFenceRange))
         geofenceService.saveGeofence(geofence)
-        
+    }
+    
+    func saveButtonPressed() {
+        saveGeofence()
+        coordinator?.dismissAddGeofence()
     }
 }
 

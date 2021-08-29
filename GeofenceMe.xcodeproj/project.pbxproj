@@ -40,6 +40,8 @@
 		E3E4A1BC26DA488B00A2D818 /* GeofenceCheckServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E4A1BB26DA488B00A2D818 /* GeofenceCheckServiceTests.swift */; };
 		E3E4A1BE26DA521500A2D818 /* GeofenceViewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E4A1BD26DA521500A2D818 /* GeofenceViewPresenterTests.swift */; };
 		E3E4A1C026DA655D00A2D818 /* LocationServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E4A1BF26DA655D00A2D818 /* LocationServiceMock.swift */; };
+		E3F3CE1526DB955F006108AB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F3CE1426DB955F006108AB /* AppCoordinator.swift */; };
+		E3F3CE1726DB95AB006108AB /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F3CE1626DB95AB006108AB /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,8 @@
 		E3E4A1BB26DA488B00A2D818 /* GeofenceCheckServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceCheckServiceTests.swift; sourceTree = "<group>"; };
 		E3E4A1BD26DA521500A2D818 /* GeofenceViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceViewPresenterTests.swift; sourceTree = "<group>"; };
 		E3E4A1BF26DA655D00A2D818 /* LocationServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceMock.swift; sourceTree = "<group>"; };
+		E3F3CE1426DB955F006108AB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		E3F3CE1626DB95AB006108AB /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,7 @@
 		22879E8E26D3CB1600682651 /* GeofenceMe */ = {
 			isa = PBXGroup;
 			children = (
+				E3F3CE1326DB954C006108AB /* Coordinator */,
 				22879EF826D7891E00682651 /* WifiDetector */,
 				22879EEF26D634FA00682651 /* GeofenceView */,
 				22879EDC26D619B300682651 /* GeofenceService */,
@@ -257,6 +262,15 @@
 				22879EF626D7891600682651 /* WifiDetectorService.swift */,
 			);
 			path = WifiDetector;
+			sourceTree = "<group>";
+		};
+		E3F3CE1326DB954C006108AB /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				E3F3CE1426DB955F006108AB /* AppCoordinator.swift */,
+				E3F3CE1626DB95AB006108AB /* Coordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,6 +405,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3F3CE1526DB955F006108AB /* AppCoordinator.swift in Sources */,
 				22879EF326D635A100682651 /* GeofenceViewModel.swift in Sources */,
 				22879EF526D7815400682651 /* GeofenceCheckService.swift in Sources */,
 				22879EE226D61A4F00682651 /* GeofenceInfo.swift in Sources */,
@@ -407,6 +422,7 @@
 				22879ED726D5EF6200682651 /* MapPin.swift in Sources */,
 				22879ECA26D4B07400682651 /* LocationServiceDelegate.swift in Sources */,
 				E3E4A1BA26D9E3FD00A2D818 /* GeofenceViewPresenterDelegate.swift in Sources */,
+				E3F3CE1726DB95AB006108AB /* Coordinator.swift in Sources */,
 				22879ED926D6124D00682651 /* AddGeofenceViewPresenter.swift in Sources */,
 				22879EC626D4AFC800682651 /* LocationServiceProviding.swift in Sources */,
 				22879EE026D61A2800682651 /* GeofenceStorageProviding.swift in Sources */,

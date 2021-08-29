@@ -10,6 +10,7 @@ import CoreLocation
 
 class GeofenceViewPresenter {
     var delegate: GeofenceViewPresenterDelegate?
+    weak var coordinator: AppCoordinator?
     
     private var viewModel: GeofenceViewModel
     private var geofenceService: GeofenceStorageProviding
@@ -31,6 +32,9 @@ class GeofenceViewPresenter {
         }
         
         self.locationService.delegate = self
+    }
+    
+    func getData() {
         startLocationDetection()
         retrieveGeofenceInfo()
     }
@@ -87,6 +91,10 @@ class GeofenceViewPresenter {
     
     var showBottomButton: Bool {
         !isGeofenceAvailable
+    }
+    
+    func bottomButtonPressed() {
+        coordinator?.presentAddGeofence()
     }
     
     func retrieveGeofenceInfo() {

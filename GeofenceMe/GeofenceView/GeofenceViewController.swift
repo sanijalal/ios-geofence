@@ -27,18 +27,13 @@ class GeofenceViewController: UIViewController {
     required init?(coder: NSCoder) {
         self.presenter = GeofenceViewPresenter()
         super.init(coder: coder)
+        self.presenter.delegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        updateView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        presenter.retrieveGeofenceInfo()
-        updateView()
+        presenter.getData()
     }
     
     func updateView() {
@@ -46,7 +41,7 @@ class GeofenceViewController: UIViewController {
         self.insideOutsideLabel.text = presenter.insideOutsideLabelString
         self.wifiLabel.text = presenter.wifiLabelString
         self.bottomButton.isHidden = !presenter.showBottomButton
-        
+
         updateMapView(geofenceInfo: presenter.geofenceInfo, latitude: presenter.latitude, longitude: presenter.longitude)
     }
     
@@ -71,17 +66,13 @@ class GeofenceViewController: UIViewController {
         mapView.setRegion(region, animated: true)
     }
     
-    func hackUpdateGeofence() {
+    func updateGeofenceInfo() {
         presenter.retrieveGeofenceInfo()
         viewNeedsUpdate()
     }
     
     @IBAction func bottomButtonPressed(_ sender: Any) {
-        let presenter = AddGeofenceViewPresenter()
-        let vc = AddGeofenceViewController(presenter: presenter)
-        self.present(vc, animated: true) {
-            
-        }
+        presenter.bottomButtonPressed()
     }
     
 }

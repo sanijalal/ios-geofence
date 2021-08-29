@@ -90,15 +90,7 @@ class AddGeofenceViewController: UIViewController {
     }
     
     @IBAction func bottomButtonPressed(_ sender: Any) {
-        presenter.saveGeofence()
-        
-        if let presentedVC = self.presentingViewController as? GeofenceViewController {
-            presentedVC.hackUpdateGeofence()
-        }
-        
-        self.dismiss(animated: true) {
-            
-        }
+        presenter.saveButtonPressed()
     }
     
 }
