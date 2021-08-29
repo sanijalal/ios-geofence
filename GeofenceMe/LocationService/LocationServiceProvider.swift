@@ -41,7 +41,6 @@ class LocationServiceProvider: NSObject, LocationServiceProviding {
 
 extension LocationServiceProvider: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Did update location")
         if let currentLocation = locations.last {
             delegate?.locationRetrieved(location: currentLocation)
         }
