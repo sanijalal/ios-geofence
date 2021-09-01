@@ -14,5 +14,8 @@ protocol LocationServiceProviding {
     func startLocationDetection()
     func stopLocationDetection()
     
+    func startMonitoring(geofence: GeofenceInfo)
+    func stopMonitoring(geofence: GeofenceInfo)
+    
     var delegate: LocationServiceDelegate? { get set }
 }

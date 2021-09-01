@@ -51,7 +51,6 @@ class AddGeofenceViewPresenter {
     }
     
     func stopLocationUpdate() {
-        
         locationService.stopLocationDetection()
     }
     
@@ -67,6 +66,7 @@ class AddGeofenceViewPresenter {
     func saveButtonPressed() {
         saveGeofence()
         coordinator?.dismissAddGeofence()
+        locationService.startMonitoring(geofence: geofence)
     }
 }
 
