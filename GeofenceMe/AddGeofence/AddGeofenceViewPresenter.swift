@@ -61,12 +61,12 @@ class AddGeofenceViewPresenter {
     func saveGeofence() {
         let geofence = GeofenceInfo(latitude: latitude, longitude: longitude, radius: Int(currentFenceRange))
         geofenceService.saveGeofence(geofence)
+        locationService.startMonitoring(geofence: geofence)
     }
     
     func saveButtonPressed() {
         saveGeofence()
         coordinator?.dismissAddGeofence()
-        locationService.startMonitoring(geofence: geofence)
     }
 }
 
