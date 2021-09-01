@@ -10,6 +10,8 @@ import CoreLocation
 @testable import GeofenceMe
 
 class LocationServiceMock: LocationServiceProviding {
+    var locationPermissionRequested = false
+    
     func startMonitoring(geofence: GeofenceInfo) {
         
     }
@@ -24,7 +26,7 @@ class LocationServiceMock: LocationServiceProviding {
     var expectedStatus: CLAuthorizationStatus = .authorizedAlways
     
     func requestLocationPermission() {
-        
+        locationPermissionRequested = true
     }
     
     func getCurrentAuthorisationState() -> CLAuthorizationStatus {

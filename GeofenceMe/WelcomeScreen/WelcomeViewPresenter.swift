@@ -7,9 +7,22 @@
 
 import Foundation
 import CoreLocation
+import UIKit
 
 class WelcomeViewPresenter {
-    private var status: CLAuthorizationStatus = .authorizedAlways
+    weak var coordinator: AppCoordinating?
+    
+    var locationService: LocationServiceProviding
+    weak var delegate: WelcomeViewPresenterDelegate?
+    
+    init(locationService: LocationServiceProviding) {
+        self.locationService = locationService
+        self.locationService.delegate = self
+    }
+    
+    private var status: CLAuthorizationStatus {
+        locationService.getCurrentAuthorisationState()
+    }
     
     var text: String {
         var contentText = ""
@@ -30,7 +43,41 @@ class WelcomeViewPresenter {
         return contentText
     }
     
+    func presentGeofencePage() {
+        coordinator?.pushGeofenceView()
+    }
+    
+    func openSettings() {
+        if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
+           UIApplication.shared.open(settingsUrl)
+         }
+    }
+    
     func buttonPressed() {
+        switch status {
+        case .notDetermined:
+            locationService.requestLocationPermission()
+        case .restricted:
+            print("Cannot do anything")
+        case .denied:
+            openSettings()
+        case .authorizedAlways, .authorizedWhenInUse:
+            presentGeofencePage()
+        @unknown default:
+            print("Ok this is weird")
+        }
+    }
+}
+
+extension WelcomeViewPresenter: LocationServiceDelegate {
+    func authorisationStatusUpdatedWith(_ status: CLAuthorizationStatus) {
+        delegate?.updateView()
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            presentGeofencePage()
+        }
+    }
+    
+    func locationRetrieved(location: CLLocation) {
         
     }
 }

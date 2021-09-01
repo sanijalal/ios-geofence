@@ -71,7 +71,7 @@ class AddGeofenceViewPresenter {
 }
 
 extension AddGeofenceViewPresenter: LocationServiceDelegate {
-    func authorisationStatusUpdated(_ with: CLAuthorizationStatus) {
+    func authorisationStatusUpdatedWith(_ with: CLAuthorizationStatus) {
         
     }
     

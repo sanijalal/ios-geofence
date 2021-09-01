@@ -12,11 +12,11 @@ class WelcomeViewController: UIViewController {
     let presenter: WelcomeViewPresenter
     
     required init?(coder: NSCoder) {
-        presenter = WelcomeViewPresenter()
+        presenter = WelcomeViewPresenter(locationService: LocationServiceProvider())
         super.init(coder: coder)
     }
     
-    init(locationServiceProvider: LocationServiceProviding, presenter: WelcomeViewPresenter) {
+    init(presenter: WelcomeViewPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -26,6 +26,7 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.delegate = self
         updateCurrentView()
     }
     
@@ -35,6 +36,12 @@ class WelcomeViewController: UIViewController {
 
     @IBAction func bottomButtonPressed(_ sender: Any) {
         presenter.buttonPressed()
+    }
+}
+
+extension WelcomeViewController: WelcomeViewPresenterDelegate {
+    func updateView() {
+        updateCurrentView()
     }
 }
 

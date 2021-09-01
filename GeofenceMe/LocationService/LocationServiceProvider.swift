@@ -64,4 +64,12 @@ extension LocationServiceProvider: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error to get location")
     }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        delegate?.authorisationStatusUpdatedWith(manager.authorizationStatus)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        delegate?.authorisationStatusUpdatedWith(status)
+    }
 }
