@@ -37,6 +37,7 @@
 		22879EF526D7815400682651 /* GeofenceCheckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22879EF426D7815400682651 /* GeofenceCheckService.swift */; };
 		22879EF726D7891600682651 /* WifiDetectorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22879EF626D7891600682651 /* WifiDetectorService.swift */; };
 		2297F27026DF2CA600BF241C /* GeofenceMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297F26F26DF2CA600BF241C /* GeofenceMonitor.swift */; };
+		2297F27A26DF72F200BF241C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297F27926DF72F200BF241C /* NotificationService.swift */; };
 		E3E4A1BA26D9E3FD00A2D818 /* GeofenceViewPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E4A1B926D9E3FD00A2D818 /* GeofenceViewPresenterDelegate.swift */; };
 		E3E4A1BC26DA488B00A2D818 /* GeofenceCheckServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E4A1BB26DA488B00A2D818 /* GeofenceCheckServiceTests.swift */; };
 		E3E4A1BE26DA521500A2D818 /* GeofenceViewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E4A1BD26DA521500A2D818 /* GeofenceViewPresenterTests.swift */; };
@@ -97,6 +98,7 @@
 		22879EF426D7815400682651 /* GeofenceCheckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceCheckService.swift; sourceTree = "<group>"; };
 		22879EF626D7891600682651 /* WifiDetectorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiDetectorService.swift; sourceTree = "<group>"; };
 		2297F26F26DF2CA600BF241C /* GeofenceMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceMonitor.swift; sourceTree = "<group>"; };
+		2297F27926DF72F200BF241C /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		E3E4A1B926D9E3FD00A2D818 /* GeofenceViewPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceViewPresenterDelegate.swift; sourceTree = "<group>"; };
 		E3E4A1BB26DA488B00A2D818 /* GeofenceCheckServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceCheckServiceTests.swift; sourceTree = "<group>"; };
 		E3E4A1BD26DA521500A2D818 /* GeofenceViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceViewPresenterTests.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		22879E8E26D3CB1600682651 /* GeofenceMe */ = {
 			isa = PBXGroup;
 			children = (
+				2297F27826DF72D700BF241C /* NotificationService */,
 				22879EF826D7891E00682651 /* WifiDetector */,
 				22879EEF26D634FA00682651 /* GeofenceView */,
 				22879EDC26D619B300682651 /* GeofenceService */,
@@ -260,6 +263,14 @@
 				22879EF626D7891600682651 /* WifiDetectorService.swift */,
 			);
 			path = WifiDetector;
+			sourceTree = "<group>";
+		};
+		2297F27826DF72D700BF241C /* NotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				2297F27926DF72F200BF241C /* NotificationService.swift */,
+			);
+			path = NotificationService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,6 +424,7 @@
 				E3E4A1BA26D9E3FD00A2D818 /* GeofenceViewPresenterDelegate.swift in Sources */,
 				22879ED926D6124D00682651 /* AddGeofenceViewPresenter.swift in Sources */,
 				22879EC626D4AFC800682651 /* LocationServiceProviding.swift in Sources */,
+				2297F27A26DF72F200BF241C /* NotificationService.swift in Sources */,
 				22879EE026D61A2800682651 /* GeofenceStorageProviding.swift in Sources */,
 				22879EF726D7891600682651 /* WifiDetectorService.swift in Sources */,
 				22879E9226D3CB1600682651 /* SceneDelegate.swift in Sources */,
