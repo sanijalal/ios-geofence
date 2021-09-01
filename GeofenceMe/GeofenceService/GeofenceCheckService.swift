@@ -10,10 +10,8 @@ import CoreLocation
 
 class GeofenceCheckService {
     class func isGeofenceInLocation(geofence: GeofenceInfo, latitude: Double, longitude: Double) -> Bool {
-        let geofenceLocation = CLLocation(latitude: geofence.latitude, longitude: geofence.longitude)
-        let currentLocation = CLLocation(latitude: latitude, longitude: longitude)
-        let distance = geofenceLocation.distance(from: currentLocation)
-        
-        return distance <= Double(geofence.radius)
+        let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: geofence.latitude, longitude: geofence.longitude),
+                                      radius: CLLocationDistance(geofence.radius), identifier: "sani")
+        return region.contains(CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
     }
 }
