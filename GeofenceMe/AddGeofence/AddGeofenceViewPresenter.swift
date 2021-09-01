@@ -50,7 +50,6 @@ class AddGeofenceViewPresenter {
     }
     
     func stopLocationUpdate() {
-        
         locationService.stopLocationDetection()
     }
     
@@ -61,7 +60,7 @@ class AddGeofenceViewPresenter {
     func saveGeofence() {
         let geofence = GeofenceInfo(latitude: latitude, longitude: longitude, radius: Int(currentFenceRange))
         geofenceService.saveGeofence(geofence)
-        
+        locationService.startMonitoring(geofence: geofence)
     }
 }
 

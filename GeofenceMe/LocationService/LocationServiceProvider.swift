@@ -37,6 +37,21 @@ class LocationServiceProvider: NSObject, LocationServiceProviding {
     func getCurrentAuthorisationState() -> CLAuthorizationStatus {
         return locationManager.authorizationStatus
     }
+    
+    func startMonitoring(geofence: GeofenceInfo) {
+        let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: geofence.latitude, longitude: geofence.longitude),
+                                      radius: CLLocationDistance(geofence.radius),
+                                      identifier: "fence")
+        region.notifyOnEntry = true
+        locationManager.startMonitoring(for: region)
+    }
+    
+    func stopMonitoring(geofence: GeofenceInfo) {
+        let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: geofence.latitude, longitude: geofence.longitude),
+                                      radius: CLLocationDistance(geofence.radius),
+                                      identifier: "fence")
+        locationManager.stopMonitoring(for: region)
+    }
 }
 
 extension LocationServiceProvider: CLLocationManagerDelegate {
