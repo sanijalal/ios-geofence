@@ -6,12 +6,18 @@
 //
 
 import UIKit
+import CoreLocation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    private var geofenceMonitor: GeofenceMonitor?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        geofenceMonitor = GeofenceMonitor(locationManager: CLLocationManager())
+        geofenceMonitor?.start()
+        
         return true
     }
 

@@ -33,6 +33,7 @@ class GeofenceViewController: UIViewController {
         super.viewDidLoad()
         mapView.delegate = self
         updateView()
+        presenter.getNotificationPermission()
     }
     
     override func viewWillAppear(_ animated: Bool) {
