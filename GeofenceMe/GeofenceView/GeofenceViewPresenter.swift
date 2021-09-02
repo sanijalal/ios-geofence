@@ -16,7 +16,6 @@ class GeofenceViewPresenter {
     private var geofenceService: GeofenceStorageProviding
     private var wifiService: WifiDetectorService
     private var locationService: LocationServiceProviding
-    private var notificationService: NotificationService = NotificationService()
     
     init(viewModel: GeofenceViewModel = GeofenceViewModel(),
          geofenceService: GeofenceStorageProviding = GeofenceStorageService(),
@@ -38,10 +37,6 @@ class GeofenceViewPresenter {
     func getData() {
         startLocationDetection()
         retrieveGeofenceInfo()
-    }
-    
-    func getNotificationPermission() {
-        notificationService.requestPermission()
     }
     
     func startLocationDetection() {

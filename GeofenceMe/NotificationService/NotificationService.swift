@@ -12,8 +12,6 @@ import UIKit
 class NotificationService {
     func requestPermission() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { isAuthorised, error in
-            print(isAuthorised)
-            print(error)
         }
     }
     

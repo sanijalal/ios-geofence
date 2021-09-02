@@ -25,18 +25,22 @@ class AddGeofenceViewPresenter {
         viewModel.currentFenceRange + 250
     }
     
-    var viewModel: AddGeofenceViewModel
+    private var viewModel: AddGeofenceViewModel
     weak var delegate: AddGeofenceViewPresenterDelegate?
-    var geofenceService: GeofenceStorageProviding
+    private var geofenceService: GeofenceStorageProviding
     private var locationService: LocationServiceProviding
+    private var notificationService: NotificationService
+    
     weak var coordinator: AppCoordinator?
     
     init (geofenceService: GeofenceStorageProviding = GeofenceStorageService(),
           viewModel: AddGeofenceViewModel = AddGeofenceViewModel(),
-          locationService: LocationServiceProviding = LocationServiceProvider()) {
+          locationService: LocationServiceProviding = LocationServiceProvider(),
+          notificationService: NotificationService = NotificationService()) {
         self.geofenceService = geofenceService
         self.viewModel = viewModel
         self.locationService = locationService
+        self.notificationService = notificationService
         self.locationService.delegate = self
     }
     
@@ -64,7 +68,12 @@ class AddGeofenceViewPresenter {
         locationService.startMonitoring(geofence: geofence)
     }
     
+    func getPermissionForNotifications() {
+        notificationService.requestPermission()
+    }
+    
     func saveButtonPressed() {
+        getPermissionForNotifications()
         saveGeofence()
         coordinator?.dismissAddGeofence()
     }
