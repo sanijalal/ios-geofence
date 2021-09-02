@@ -169,6 +169,7 @@
 		22879E8E26D3CB1600682651 /* GeofenceMe */ = {
 			isa = PBXGroup;
 			children = (
+				22D6E24C26E0DC340075469A /* UIColorExtension */,
 				22D6E24926E0C7340075469A /* ViewControllerAppEventsProtocol */,
 				2297F27D26DF8F6900BF241C /* Coordinator */,
 				2297F27826DF72D700BF241C /* NotificationService */,
@@ -311,6 +312,13 @@
 				22D6E24A26E0C75E0075469A /* ViewControllerAppEventResponding.swift */,
 			);
 			path = ViewControllerAppEventsProtocol;
+			sourceTree = "<group>";
+		};
+		22D6E24C26E0DC340075469A /* UIColorExtension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIColorExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

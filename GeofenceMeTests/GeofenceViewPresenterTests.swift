@@ -30,7 +30,7 @@ class GeofenceViewPresenterTests: XCTestCase {
                                      longitude: defaultLongitude, currentSSIDName: defaultSSIDName)
     }
     
-    private func defaultPresenter() -> GeofenceViewPresenter {
+    private func defaultPresenterWithNoGeofence() -> GeofenceViewPresenter {
         let model = GeofenceViewModel(geofenceInfo: defaultGeofenceInfo(),
                                       isInGeofence: true,
                               latitude: defaultLatitude,
@@ -52,8 +52,8 @@ class GeofenceViewPresenterTests: XCTestCase {
     }
     
     func testGeofenceReturnNilWhenGeofenceStorageReturnsNil() throws {
-        let presenter = defaultPresenter()
-        
+        let presenter = defaultPresenterWithNoGeofence()
+        presenter.getData()
         let geofence = presenter.geofenceInfo
         
         XCTAssertTrue(geofence == nil, "Geofence is not nil even when storage has nil Geofence")
@@ -70,6 +70,7 @@ class GeofenceViewPresenterTests: XCTestCase {
         
         let presenter = GeofenceViewPresenter(viewModel: defaultViewModel(), geofenceService: geofenceStorageService, wifiService: WifiDetectorService(), locationService: LocationServiceMock())
         
+        presenter.getData()
         let geofenceInfo = presenter.geofenceInfo
         
         XCTAssertTrue(geofenceInfo?.latitude == latitudeToTest, "Latitude in presenter GeofenceInfo is not of expected value.")
@@ -79,7 +80,7 @@ class GeofenceViewPresenterTests: XCTestCase {
     }
     
     func testCoordinateIsSameAsInitialisedWhenLocationIsNotRetrieved () {
-        let presenter = defaultPresenter()
+        let presenter = defaultPresenterWithNoGeofence()
         XCTAssertTrue(presenter.latitude == defaultLatitude, "Latitude in presenter is not as per initialised")
         XCTAssertTrue(presenter.longitude == defaultLongitude, "Longitude in presenter is not as per initialised")
     }
@@ -90,6 +91,7 @@ class GeofenceViewPresenterTests: XCTestCase {
         geofenceStorageService.info = nil
         
         let presenter = GeofenceViewPresenter(viewModel: defaultViewModel(), geofenceService: geofenceStorageService, wifiService: WifiDetectorService(), locationService: LocationServiceMock())
+        presenter.getData()
         
         let isGeofenceAvailable = presenter.isGeofenceAvailable
         XCTAssertTrue(isGeofenceAvailable == false, "IsGeofenceAvailable returns true even when storage has no geofence")
@@ -113,7 +115,8 @@ class GeofenceViewPresenterTests: XCTestCase {
     }
     
     func testDisplayValuesAreCorrectWhenGeofenceInfoIsNotInStorage () {
-        let presenter = defaultPresenter()
+        let presenter = defaultPresenterWithNoGeofence()
+        presenter.getData()
         XCTAssertTrue(presenter.showBottomButton == true, "Show Button Button is false even when geofenceInfo is available.")
         XCTAssertTrue(presenter.geofenceLabelString == "No geofence configured.", "No geofence configured is not shown.")
     }
@@ -137,19 +140,9 @@ class GeofenceViewPresenterTests: XCTestCase {
     }
     
     func testLocationIsInsideGeofenceWhenLocationServiceReturnsLocationOfGeofence () {
-        
-        let expectedGeofenceInfo = defaultGeofenceInfo()
-        
-        let geofenceService = GeoFenceStorageMock()
-        geofenceService.info = expectedGeofenceInfo
-        
-        let locationService = LocationServiceMock()
-        
-        let presenter = GeofenceViewPresenter(viewModel: defaultViewModel(), geofenceService: geofenceService, wifiService: WifiDetectorService(), locationService: locationService)
-        
-        let simulatedLocation = CLLocation(latitude: expectedGeofenceInfo.latitude, longitude: expectedGeofenceInfo.longitude)
-        
-        locationService.simulateLocationRetrieved(location: simulatedLocation)
+        let geofenceInfo = defaultGeofenceInfo()
+        let simulatedLocation = CLLocation(latitude: geofenceInfo.latitude, longitude: geofenceInfo.longitude)
+        let presenter = setupPresenterWithLocationInGeofence(location: simulatedLocation, geofenceInfo: geofenceInfo)
         
         XCTAssertTrue(presenter.latitude == simulatedLocation.coordinate.latitude, "Latitude in presenter is not the same as returned by location service.")
         XCTAssertTrue(presenter.longitude == simulatedLocation.coordinate.longitude, "Longitude in presenter is not the same as returned by location service.")
@@ -180,5 +173,33 @@ class GeofenceViewPresenterTests: XCTestCase {
         XCTAssertTrue(presenter.insideOutsideLabelString == "You are outside the geofence.", "Presenter not displaying outside geofence string")
         
     }
+    
+    func testGeofenceConfiguredColorNamedReturnWhenNoGeofenceIsConfigured() {
+        let presenter = defaultPresenterWithNoGeofence()
+        presenter.getData()
+        let colorName = presenter.geofenceColorName
+        XCTAssertTrue(colorName == "NoGeofenceColor", "Name of color returned is not correct")
+    }
+    
+    func testGeofenceConfiguredColorNamedReturnWhenGeofenceIsConfigured() {
+        let presenter = defaultPresenterWithGeofence()
+        presenter.getData()
+        let colorName = presenter.geofenceColorName
+        XCTAssertTrue(colorName == "HasGeofenceColor", "Name of color returned is not correct.")
+    }
+    
+    private func setupPresenterWithLocationInGeofence(location: CLLocation, geofenceInfo: GeofenceInfo) -> GeofenceViewPresenter {
+        let expectedGeofenceInfo = geofenceInfo
+        
+        let geofenceService = GeoFenceStorageMock()
+        geofenceService.info = expectedGeofenceInfo
+        
+        let locationService = LocationServiceMock()
+        
+        let presenter = GeofenceViewPresenter(viewModel: defaultViewModel(), geofenceService: geofenceService, wifiService: WifiDetectorService(), locationService: locationService)
+        presenter.getData()
 
+        locationService.simulateLocationRetrieved(location: location)
+        return presenter
+    }
 }

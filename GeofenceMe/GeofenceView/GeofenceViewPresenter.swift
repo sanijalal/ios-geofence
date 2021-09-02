@@ -90,8 +90,17 @@ class GeofenceViewPresenter {
         }
     }
     
+    var geofenceColorName: String {
+        isGeofenceAvailable ? "HasGeofenceColor" : "NoGeofenceColor"
+    }
+    
+    var insideOutsideColorName: String {
+        if (isGeofenceAvailable == false) { return "NoGeofenceColor" }
+        return isInGeofence ? "HasGeofenceColor" : "NoGeofenceColor"
+    }
+    
     var wifiLabelString: String {
-        "Not connected to wifi"
+        ""
     }
     
     var showBottomButton: Bool {
