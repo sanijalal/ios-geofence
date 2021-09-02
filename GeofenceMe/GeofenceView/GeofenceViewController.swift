@@ -21,18 +21,17 @@ class GeofenceViewController: UIViewController {
     init(presenter: GeofenceViewPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
-        self.presenter.delegate = self
     }
     
     required init?(coder: NSCoder) {
         self.presenter = GeofenceViewPresenter()
         super.init(coder: coder)
-        self.presenter.delegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        self.presenter.delegate = self
         presenter.getData()
         updateView()
         presenter.getNotificationPermission()
