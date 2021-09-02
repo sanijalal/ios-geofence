@@ -43,6 +43,23 @@ class WelcomeViewPresenter {
         return contentText
     }
     
+    var buttontext: String {
+        var contentText = ""
+        switch status {
+        case .notDetermined:
+            contentText = "Grant Permission"
+        case .restricted:
+            contentText = ""
+        case .denied:
+            contentText = "Open Settings"
+        case .authorizedAlways, .authorizedWhenInUse:
+            contentText = "Good to go!"
+        @unknown default:
+            contentText = "Contact developers."
+        }
+        return contentText
+    }
+    
     func presentGeofencePage() {
         coordinator?.pushGeofenceView()
     }

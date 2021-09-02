@@ -68,4 +68,10 @@ class AppCoordinator: AppCoordinating {
             
         })
     }
+    
+    func appDidBecomeActive() {
+        if let topVC = navigationController.topViewController as? ViewControllerAppEventResponding {
+            topVC.appDidBecomeActive()
+        }
+    }
 }

@@ -10,6 +10,7 @@ import CoreLocation
 
 class WelcomeViewController: UIViewController {
     let presenter: WelcomeViewPresenter
+    var isReadyForUpdates: Bool = false
     
     required init?(coder: NSCoder) {
         presenter = WelcomeViewPresenter(locationService: LocationServiceProvider())
@@ -26,12 +27,14 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        isReadyForUpdates = true
         presenter.delegate = self
         updateCurrentView()
     }
     
     private func updateCurrentView() {
         contentLabel.text = presenter.text
+        bottomButton.setTitle(presenter.buttontext, for: .normal)
     }
 
     @IBAction func bottomButtonPressed(_ sender: Any) {
@@ -42,6 +45,14 @@ class WelcomeViewController: UIViewController {
 extension WelcomeViewController: WelcomeViewPresenterDelegate {
     func updateView() {
         updateCurrentView()
+    }
+}
+
+extension WelcomeViewController: ViewControllerAppEventResponding {
+    func appDidBecomeActive() {
+        if (isReadyForUpdates) {
+            updateCurrentView()
+        }
     }
 }
 
