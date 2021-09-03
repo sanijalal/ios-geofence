@@ -48,12 +48,12 @@ class GeofenceViewController: UIViewController {
         self.geofenceLabel.text = presenter.geofenceLabelString
         self.insideOutsideLabel.text = presenter.insideOutsideLabelString
         self.wifiLabel.text = presenter.wifiLabelString
-        self.bottomButton.isHidden = !presenter.showBottomButton
-
         updateMapView(geofenceInfo: presenter.geofenceInfo, latitude: presenter.latitude, longitude: presenter.longitude)
         
         self.geofenceIndicatorView.backgroundColor = UIColor.init(named: presenter.geofenceColorName)
         self.geofenceInsideOutIndicatorView.backgroundColor = UIColor.init(named: presenter.insideOutsideColorName)
+        
+        bottomButton.setTitle(presenter.bottomButtonString, for: .normal)
     }
     
     private func updateMapView(geofenceInfo: GeofenceInfo?, latitude: Double, longitude: Double) {

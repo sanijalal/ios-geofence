@@ -90,17 +90,17 @@ class GeofenceViewPresenter {
         return isInGeofence ? "HasGeofenceColor" : "NoGeofenceColor"
     }
     
+    var bottomButtonString: String {
+        isGeofenceAvailable ? "Configure Geofence" : "Add Geofence"
+    }
+    
     var wifiLabelString: String {
         guard let ssid = viewModel.currentSSIDName else {return ""}
         return "You are connected to \(ssid)"
     }
     
-    var showBottomButton: Bool {
-        !isGeofenceAvailable
-    }
-    
     func bottomButtonPressed() {
-        coordinator?.presentAddGeofence()
+        isGeofenceAvailable ? coordinator?.presentEditGeofence() : coordinator?.presentAddGeofence()
     }
     
     func retrieveGeofenceInfo() {
