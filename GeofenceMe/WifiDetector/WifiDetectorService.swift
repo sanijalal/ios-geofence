@@ -7,14 +7,18 @@
 
 import Foundation
 import SystemConfiguration.CaptiveNetwork
-import NetworkExtension
 
 class WifiDetectorService {
-    func getSSIDName(callback: @escaping ( (String?) -> Void )) {
-//        NEHotspotNetwork.fetchCurrent { network in
-//            callback(network?.ssid)
-//        }
-        callback(nil)
-        // This needs to be tested on actual device with entitlement.
+    func getWiFiSsid() -> String? {
+        var ssid: String?
+        if let interfaces = CNCopySupportedInterfaces() as NSArray? {
+            for interface in interfaces {
+                if let interfaceInfo = CNCopyCurrentNetworkInfo(interface as! CFString) as NSDictionary? {
+                    ssid = interfaceInfo[kCNNetworkInfoKeySSID as String] as? String
+                    break
+                }
+            }
+        }
+        return ssid
     }
 }

@@ -115,6 +115,7 @@
 		22D6E24526DFBF600075469A /* AppCoordinatingSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatingSpy.swift; sourceTree = "<group>"; };
 		22D6E24726DFBF7D0075469A /* AppCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinating.swift; sourceTree = "<group>"; };
 		22D6E24A26E0C75E0075469A /* ViewControllerAppEventResponding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAppEventResponding.swift; sourceTree = "<group>"; };
+		22D6E24D26E1D9090075469A /* GeofenceMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GeofenceMe.entitlements; sourceTree = "<group>"; };
 		E3E4A1B926D9E3FD00A2D818 /* GeofenceViewPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceViewPresenterDelegate.swift; sourceTree = "<group>"; };
 		E3E4A1BB26DA488B00A2D818 /* GeofenceCheckServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceCheckServiceTests.swift; sourceTree = "<group>"; };
 		E3E4A1BD26DA521500A2D818 /* GeofenceViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceViewPresenterTests.swift; sourceTree = "<group>"; };
@@ -169,7 +170,7 @@
 		22879E8E26D3CB1600682651 /* GeofenceMe */ = {
 			isa = PBXGroup;
 			children = (
-				22D6E24C26E0DC340075469A /* UIColorExtension */,
+				22D6E24D26E1D9090075469A /* GeofenceMe.entitlements */,
 				22D6E24926E0C7340075469A /* ViewControllerAppEventsProtocol */,
 				2297F27D26DF8F6900BF241C /* Coordinator */,
 				2297F27826DF72D700BF241C /* NotificationService */,
@@ -312,13 +313,6 @@
 				22D6E24A26E0C75E0075469A /* ViewControllerAppEventResponding.swift */,
 			);
 			path = ViewControllerAppEventsProtocol;
-			sourceTree = "<group>";
-		};
-		22D6E24C26E0DC340075469A /* UIColorExtension */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UIColorExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -664,7 +658,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = GeofenceMe/GeofenceMe.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = ZWNS9Y7FJU;
 				INFOPLIST_FILE = GeofenceMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -672,6 +669,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.abdsani.GeofenceMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "GeofenceMe Profile Sep 3 2021";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -682,7 +680,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = GeofenceMe/GeofenceMe.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = ZWNS9Y7FJU;
 				INFOPLIST_FILE = GeofenceMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -690,6 +691,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.abdsani.GeofenceMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "GeofenceMe Profile Sep 3 2021";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

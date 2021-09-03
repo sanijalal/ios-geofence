@@ -25,16 +25,12 @@ class GeofenceViewPresenter {
         
         self.geofenceService = geofenceService
         self.locationService = locationService
-        
         self.wifiService = wifiService
-        self.wifiService.getSSIDName { name in
-            self.viewModel.currentSSIDName = name
-        }
-        
         self.locationService.delegate = self
     }
     
     func getData() {
+        viewModel.currentSSIDName = wifiService.getWiFiSsid()
         startLocationDetection()
         retrieveGeofenceInfo()
     }
@@ -95,7 +91,8 @@ class GeofenceViewPresenter {
     }
     
     var wifiLabelString: String {
-        ""
+        guard let ssid = viewModel.currentSSIDName else {return ""}
+        return "You are connected to \(ssid)"
     }
     
     var showBottomButton: Bool {
