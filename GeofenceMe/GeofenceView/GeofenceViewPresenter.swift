@@ -91,7 +91,7 @@ class GeofenceViewPresenter {
     }
     
     var bottomButtonString: String {
-        isGeofenceAvailable ? "Configure Geofence" : "Add Geofence"
+        isGeofenceAvailable ? "Delete Geofence" : "Add Geofence"
     }
     
     var wifiLabelString: String {
@@ -100,11 +100,17 @@ class GeofenceViewPresenter {
     }
     
     func bottomButtonPressed() {
-        isGeofenceAvailable ? coordinator?.presentEditGeofence() : coordinator?.presentAddGeofence()
+        isGeofenceAvailable ? deleteGeofenceInfo() : coordinator?.presentAddGeofence()
     }
     
     func retrieveGeofenceInfo() {
         viewModel.geofenceInfo = geofenceService.getGeofence()
+    }
+    
+    func deleteGeofenceInfo() {
+        geofenceService.deleteGeofence()
+        getData()
+        delegate?.viewNeedsUpdate()
     }
 }
 

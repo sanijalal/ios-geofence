@@ -9,6 +9,10 @@ import Foundation
 @testable import GeofenceMe
 
 class GeoFenceStorageMock: GeofenceStorageProviding {
+    func deleteGeofence() {
+        self.info = nil
+    }
+    
     var info: GeofenceInfo?
     
     func saveGeofence(_ info: GeofenceInfo) {

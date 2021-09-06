@@ -9,6 +9,7 @@ import Foundation
 
 class GeofenceStorageService: GeofenceStorageProviding {
     private var userDefaults: UserDefaults
+    private let plistKey = "geofence"
     
     public init(userDefaults: UserDefaults = UserDefaults.standard) {
         self.userDefaults = userDefaults
@@ -18,14 +19,14 @@ class GeofenceStorageService: GeofenceStorageProviding {
         do {
             let encoder = JSONEncoder()
             let data = try encoder.encode(info)
-            userDefaults.set(data, forKey: "geofence")
+            userDefaults.set(data, forKey: plistKey)
         } catch {
             
         }
     }
     
     func getGeofence() -> GeofenceInfo? {
-        guard let data = userDefaults.object(forKey: "geofence") as? Data else {
+        guard let data = userDefaults.object(forKey: plistKey) as? Data else {
             return nil
         }
         
@@ -36,5 +37,9 @@ class GeofenceStorageService: GeofenceStorageProviding {
         } catch {
             return nil
         }        
+    }
+    
+    func deleteGeofence() {
+        userDefaults.removeObject(forKey: plistKey)
     }
 }

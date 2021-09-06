@@ -20,17 +20,32 @@ class GeofenceStorageServiceTests: XCTestCase {
         service = GeofenceStorageService(userDefaults: userDefaults)
     }
     
+    private func defaultGeofenceInfo() -> GeofenceInfo {
+        GeofenceInfo(latitude: 20,
+                     longitude: 20,
+                     radius: 4,
+                     monitorOnExit: true,
+                     monitorOnEntry: true,
+                     geofenceName: "gesundheit")
+    }
+    
     func testSavesGeofenceShouldKeepInUserDefaults() {
-        let info = GeofenceInfo(latitude: 20, longitude: 20, radius: 4, monitorOnExit: true, monitorOnEntry: true, geofenceName: "gesundheit")
-        service.saveGeofence(info)
-        
+        service.saveGeofence(defaultGeofenceInfo())
         let data = userDefaults.data(forKey: "geofence")
-        
         XCTAssertTrue(data != nil)
     }
     
     func testWhenNoGeofenceInfoIsStoredShouldNotRetrieveGeofenceInfo() {
         let info = service.getGeofence()
         XCTAssertTrue(info == nil, "No geofence info should be retrieved but is retrieved.")
+    }
+    
+    func testDeleteRemovesGeofenceInfo() {
+        service.saveGeofence(defaultGeofenceInfo())
+        let info = service.getGeofence()
+        XCTAssertTrue(info != nil, "Geofence info should be retrieved but is not retrieved.")
+        service.deleteGeofence()
+        let infoAfterDelete = service.getGeofence()
+        XCTAssertTrue(infoAfterDelete == nil, "No geofence info should be retrieved but is retrieved.")
     }
 }
