@@ -40,16 +40,16 @@
                         <constraint firstAttribute="height" constant="50" id="D48-TT-RUb"/>
                     </constraints>
                     <segments>
-                        <segment title="5"/>
-                        <segment title="10"/>
-                        <segment title="20"/>
+                        <segment title="50"/>
+                        <segment title="100"/>
+                        <segment title="200"/>
                     </segments>
                     <connections>
                         <action selector="controlChanged:" destination="-1" eventType="valueChanged" id="oWb-gh-BGr"/>
                     </connections>
                 </segmentedControl>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area Range(in kilometers)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPY-jv-l3j">
-                    <rect key="frame" x="20" y="640" width="175.5" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area Range(in meters)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPY-jv-l3j">
+                    <rect key="frame" x="20" y="640" width="151.5" height="17"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>

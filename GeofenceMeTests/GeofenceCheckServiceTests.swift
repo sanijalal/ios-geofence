@@ -11,7 +11,13 @@ import XCTest
 class GeofenceCheckServiceTests: XCTestCase {
 
     private func createGeofenceInfo(latitude: Double = 24, longitude: Double = 26, radius: Int = 1000, ssid: String? = nil) -> GeofenceInfo {
-        return GeofenceInfo(latitude: latitude, longitude: longitude, radius: radius, ssid: nil)
+        return GeofenceInfo(latitude: latitude,
+                            longitude: longitude,
+                            radius: radius,
+                            monitorOnExit: true,
+                            monitorOnEntry: true,
+                            geofenceName: "sani",
+                            ssid: ssid)
     }
     
     func testReturnTrueWhenLocationIsGeofenceCenter() throws {

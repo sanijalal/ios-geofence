@@ -13,7 +13,7 @@ class AddGeofencePresenterViewTests: XCTestCase {
     func testSegmentValueChangeChangesRadius() {
         let presenter = AddGeofenceViewPresenter()
         
-        let cases = [(0, 50), (1, 100), (2,150)]
+        let cases = [(0, 50), (1, 100), (2,200)]
         
         cases.forEach { testCase in
             presenter.segmentSelected(index: testCase.0)

@@ -21,7 +21,7 @@ class GeofenceStorageServiceTests: XCTestCase {
     }
     
     func testSavesGeofenceShouldKeepInUserDefaults() {
-        let info = GeofenceInfo(latitude: 20, longitude: 20, radius: 4)
+        let info = GeofenceInfo(latitude: 20, longitude: 20, radius: 4, monitorOnExit: true, monitorOnEntry: true, geofenceName: "gesundheit")
         service.saveGeofence(info)
         
         let data = userDefaults.data(forKey: "geofence")

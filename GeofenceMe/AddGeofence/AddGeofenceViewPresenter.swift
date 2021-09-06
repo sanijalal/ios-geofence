@@ -45,7 +45,15 @@ class AddGeofenceViewPresenter {
     }
     
     func segmentSelected(index: Int) {
-        viewModel.currentFenceRange = CLLocationDistance((index + 1) * 50)
+        var fenceRange = 0
+        if (index == 0) {
+            fenceRange = 50
+        } else if (index == 1) {
+            fenceRange = 100
+        } else if (index == 2) {
+            fenceRange = 200
+        }
+        viewModel.currentFenceRange = CLLocationDistance(fenceRange)
         delegate?.fenceRangeChanged()
     }
     
@@ -63,7 +71,12 @@ class AddGeofenceViewPresenter {
     }
     
     func saveGeofence() {
-        let geofence = GeofenceInfo(latitude: latitude, longitude: longitude, radius: Int(currentFenceRange))
+        let geofence = GeofenceInfo(latitude: latitude,
+                                    longitude: longitude,
+                                    radius: Int(currentFenceRange),
+                                    monitorOnExit: true,
+                                    monitorOnEntry: true,
+                                    geofenceName: "Massasuchets")
         geofenceService.saveGeofence(geofence)
         locationService.startMonitoring(geofence: geofence)
     }

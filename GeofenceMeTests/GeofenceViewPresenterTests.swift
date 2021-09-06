@@ -18,13 +18,16 @@ class GeofenceViewPresenterTests: XCTestCase {
 
     private func defaultGeofenceInfo() -> GeofenceInfo {
         return GeofenceInfo(latitude: defaultLatitude,
-                            longitude: defaultLongitude, radius: defaultRadius, ssid: defaultSSIDName)
+                            longitude: defaultLongitude,
+                            radius: defaultRadius,
+                            monitorOnExit: true,
+                            monitorOnEntry: true,
+                            geofenceName: "sani",
+                            ssid: nil)
     }
     
     private func defaultViewModel() -> GeofenceViewModel {
-        let geofenceInfo = GeofenceInfo(latitude: 0, longitude: 0, radius: 10, ssid: nil)
-        
-        return GeofenceViewModel(geofenceInfo: geofenceInfo,
+        return GeofenceViewModel(geofenceInfo: defaultGeofenceInfo(),
                                              isInGeofence: true,
                                      latitude: defaultLatitude,
                                      longitude: defaultLongitude, currentSSIDName: defaultSSIDName)
@@ -64,9 +67,18 @@ class GeofenceViewPresenterTests: XCTestCase {
         let longitudeToTest: Double = 14
         let radiusToTest = 243
         let ssidToTest = "Wax"
+        let name = "Namaku"
+        let onExit = true
+        let onEntry = true
         
         let geofenceStorageService = GeoFenceStorageMock()
-        geofenceStorageService.info = GeofenceInfo(latitude: latitudeToTest, longitude: longitudeToTest, radius: radiusToTest, ssid:ssidToTest)
+        geofenceStorageService.info = GeofenceInfo(latitude: latitudeToTest,
+                                                   longitude: longitudeToTest,
+                                                   radius: radiusToTest,
+                                                   monitorOnExit: onExit,
+                                                   monitorOnEntry: onEntry,
+                                                   geofenceName: name,
+                                                   ssid: ssidToTest)
         
         let presenter = GeofenceViewPresenter(viewModel: defaultViewModel(), geofenceService: geofenceStorageService, wifiService: WifiDetectorService(), locationService: LocationServiceMock())
         
@@ -110,14 +122,12 @@ class GeofenceViewPresenterTests: XCTestCase {
     
     func testDisplayValuesAreCorrectWhenGeofenceInfoIsInStorage () {
         let presenter = defaultPresenterWithGeofence()
-        XCTAssertTrue(presenter.showBottomButton == false, "Show Button Button is True even when geofenceInfo is available.")
         XCTAssertTrue(presenter.geofenceLabelString == "Geofence configured", "Geofence configured is not shown.")
     }
     
     func testDisplayValuesAreCorrectWhenGeofenceInfoIsNotInStorage () {
         let presenter = defaultPresenterWithNoGeofence()
         presenter.getData()
-        XCTAssertTrue(presenter.showBottomButton == true, "Show Button Button is false even when geofenceInfo is available.")
         XCTAssertTrue(presenter.geofenceLabelString == "No geofence configured.", "No geofence configured is not shown.")
     }
     
