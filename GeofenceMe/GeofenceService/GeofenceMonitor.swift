@@ -19,12 +19,16 @@ class GeofenceMonitor: NSObject {
     }
     
     func start() {
-        notificationService.clearNotifications()
+        clearNotifications()
         locationManager.delegate = self
     }
     
     func stop() {
         locationManager.delegate = nil
+    }
+    
+    func clearNotifications() {
+        notificationService.clearNotifications()
     }
 }
 
