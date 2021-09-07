@@ -71,7 +71,6 @@ class AppCoordinator: AppCoordinating {
     }
     
     func dismissAddGeofence() {
-        
         if let vc = navigationController.viewControllers.last as? GeofenceViewController {
             vc.updateGeofenceInfo()
         }
@@ -86,4 +85,23 @@ class AppCoordinator: AppCoordinating {
             topVC.appDidBecomeActive()
         }
     }
+    
+    func pushDetail(label: String, value: String?) {
+        let detailPresenter = DetailTextInputPresenter(label: label, value: value)
+        let detailVC = DetailTextInputViewController(presenter: detailPresenter)
+        
+        detailPresenter.coordinator = self
+        
+        navigationController.pushViewController(detailVC, animated: true)
+    }
+    
+    func popDetail(label: String, value: String?) {
+        navigationController.popViewController(animated: true)
+        
+        if let vc = navigationController.viewControllers.last as? DetailTextViewControllerResponding {
+            vc.updatedTextValue(label: label, value: value)
+        }
+    }
+    
+    
 }

@@ -23,5 +23,15 @@ class AppCoordinatingSpy: AppCoordinating {
         pushGeofenceViewCount += 1
     }
     
+    var pushDetailCalledCount = 0
+    var popDetailCalledCount = 0
+    
+    func pushDetail(label: String, value: String?) {
+        pushDetailCalledCount += 1
+    }
+    
+    func popDetail(label: String, value: String?) {
+        popDetailCalledCount += 1
+    }
     
 }

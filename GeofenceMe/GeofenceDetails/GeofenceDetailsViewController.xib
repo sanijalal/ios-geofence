@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GeofenceDetailsViewController" customModule="GeofenceMe" customModuleProvider="target">
+            <connections>
+                <outlet property="mapView" destination="P8f-r9-Rrj" id="b6b-yV-Fus"/>
+                <outlet property="mapViewHeightConstraint" destination="otB-kR-Fek" id="x9A-NW-DIr"/>
+                <outlet property="tableView" destination="yQk-bE-ax7" id="rYu-1I-dLH"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="P8f-r9-Rrj">
+                    <rect key="frame" x="0.0" y="44" width="414" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="otB-kR-Fek"/>
+                    </constraints>
+                </mapView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yQk-bE-ax7">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voc-NM-K32">
+                    <rect key="frame" x="20" y="802" width="374" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="jSM-p0-qMT"/>
+                    </constraints>
+                    <state key="normal" title="Save"/>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="yQk-bE-ax7" secondAttribute="bottom" id="0A7-A7-BCC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yQk-bE-ax7" secondAttribute="trailing" id="0T9-6M-haa"/>
+                <constraint firstItem="P8f-r9-Rrj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0WH-o8-HoI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="P8f-r9-Rrj" secondAttribute="trailing" id="89a-Co-fgo"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="voc-NM-K32" secondAttribute="trailing" constant="20" id="R8s-dI-a33"/>
+                <constraint firstItem="voc-NM-K32" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="UNY-Wg-rCW"/>
+                <constraint firstItem="P8f-r9-Rrj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="bkr-bw-IYr"/>
+                <constraint firstItem="yQk-bE-ax7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="k3c-Qa-ZvR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="voc-NM-K32" secondAttribute="bottom" id="sNO-R4-wgk"/>
+                <constraint firstItem="yQk-bE-ax7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="yLe-Yc-ntU"/>
+            </constraints>
+            <point key="canvasLocation" x="8.6956521739130448" y="63.616071428571423"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

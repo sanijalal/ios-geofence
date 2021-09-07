@@ -9,4 +9,6 @@ import Foundation
 
 protocol AppCoordinating: AnyObject, Coordinator {
     func pushGeofenceView()
+    func pushDetail(label: String, value: String?) 
+    func popDetail(label: String, value: String?)
 }
