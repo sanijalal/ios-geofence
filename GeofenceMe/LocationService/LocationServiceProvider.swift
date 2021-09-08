@@ -39,18 +39,31 @@ class LocationServiceProvider: NSObject, LocationServiceProviding {
     }
     
     func startMonitoring(geofence: GeofenceInfo) {
-        let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: geofence.latitude, longitude: geofence.longitude),
+        let coordinate = CLLocationCoordinate2D(latitude: geofence.latitude, longitude: geofence.longitude)
+        let region = CLCircularRegion(center: coordinate,
                                       radius: CLLocationDistance(geofence.radius),
-                                      identifier: "fence")
-        region.notifyOnEntry = true
+                                      identifier: geofence.geofenceName)
+        region.notifyOnEntry = geofence.monitorOnEntry
+        region.notifyOnExit = geofence.monitorOnExit
         locationManager.startMonitoring(for: region)
     }
     
     func stopMonitoring(geofence: GeofenceInfo) {
-        let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: geofence.latitude, longitude: geofence.longitude),
-                                      radius: CLLocationDistance(geofence.radius),
-                                      identifier: "fence")
-        locationManager.stopMonitoring(for: region)
+        let monitoredRegions = locationManager.monitoredRegions
+        let regionForGeofence = monitoredRegions.filter { region in
+            region.identifier == geofence.geofenceName
+        }
+        
+        for region in regionForGeofence {
+            locationManager.stopMonitoring(for: region)
+        }
+    }
+    
+    func stopMonitorAllGeofences() {
+        let monitoredRegions = locationManager.monitoredRegions
+        for region in monitoredRegions {
+            locationManager.stopMonitoring(for: region)
+        }
     }
 }
 

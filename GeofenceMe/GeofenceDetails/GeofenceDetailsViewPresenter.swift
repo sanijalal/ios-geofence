@@ -17,7 +17,9 @@ class GeofenceDetailsViewPresenter {
     private var locationService: LocationServiceProviding
     private var geofenceService: GeofenceStorageProviding
     
-    init(viewModel: GeofenceDetailsViewModel = GeofenceDetailsViewModel(), locationService: LocationServiceProviding = LocationServiceProvider(), geofenceService: GeofenceStorageProviding = GeofenceStorageService()) {
+    init(viewModel: GeofenceDetailsViewModel = GeofenceDetailsViewModel(),
+         locationService: LocationServiceProviding = LocationServiceProvider(),
+         geofenceService: GeofenceStorageProviding = GeofenceStorageService()) {
         self.locationService = locationService
         self.geofenceService = geofenceService
         self.viewModel = viewModel
@@ -145,6 +147,7 @@ class GeofenceDetailsViewPresenter {
                                     geofenceName: viewModel.name,
                                     ssid: viewModel.associatedSSID)
         geofenceService.saveGeofence(geofence)
+        locationService.startMonitoring(geofence: geofence)
         coordinator?.saveButtonPressed()
     }
     

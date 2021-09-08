@@ -44,6 +44,10 @@ class GeofenceViewController: UIViewController {
         updateView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     func updateView() {
         self.geofenceLabel.text = presenter.geofenceLabelString
         self.insideOutsideLabel.text = presenter.insideOutsideLabelString

@@ -109,6 +109,7 @@ class GeofenceViewPresenter {
     
     func deleteGeofenceInfo() {
         geofenceService.deleteGeofence()
+        locationService.stopMonitorAllGeofences()
         getData()
         delegate?.viewNeedsUpdate()
     }
@@ -124,6 +125,4 @@ extension GeofenceViewPresenter: LocationServiceDelegate {
         viewModel.longitude = location.coordinate.longitude
         delegate?.viewNeedsUpdate()
     }
-    
-    
 }
