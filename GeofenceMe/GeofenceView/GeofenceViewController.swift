@@ -20,6 +20,8 @@ class GeofenceViewController: UIViewController {
     @IBOutlet weak var geofenceInsideOutIndicatorView: UIView!
     @IBOutlet weak var mapView: MKMapView!
     
+    var readyForAppEventUpdates = false
+    
     init(presenter: GeofenceViewPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -46,6 +48,8 @@ class GeofenceViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        presenter.checkSSIDAssociation()
+        readyForAppEventUpdates = true
     }
     
     func updateView() {
@@ -93,6 +97,21 @@ class GeofenceViewController: UIViewController {
 }
 
 extension GeofenceViewController: GeofenceViewPresenterDelegate {
+    func promptToAssociateSSID(_ ssid: String) {
+        let alert = UIAlertController(title: "Associate with this Wi-fi: \(ssid)?", message: "You can associate this Wi-fi with this location so we can use the wi-fi to determine if you are in the geofence.", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { action in
+            self.presenter.updateCurrentGeofenceWithCurrentSSID()
+        }
+        let noAction = UIAlertAction(title: "No", style: .default) { action in
+            
+        }
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        self.present(alert, animated: true) {
+            
+        }
+    }
+    
     func viewNeedsUpdate() {
         updateView()
     }
@@ -110,5 +129,12 @@ extension GeofenceViewController: GeofenceDetailsResponding {
     func geofenceDetailsDismissed() {
         presenter.getData()
         updateView()
+    }
+}
+
+extension GeofenceViewController: ViewControllerAppEventResponding {
+    func appDidBecomeActive() {
+        if (readyForAppEventUpdates == false) { return }
+        presenter.checkSSIDAssociation()
     }
 }

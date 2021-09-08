@@ -37,12 +37,10 @@ extension GeofenceMonitor: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        print("Did enter region")
         notificationService.sendLocalNotification(text: "Entered Region!")
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        print("Did exit region")
         notificationService.sendLocalNotification(text: "Exit Region!")
     }
 }

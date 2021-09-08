@@ -9,5 +9,6 @@ import Foundation
 
 protocol GeofenceViewPresenterDelegate {
     func viewNeedsUpdate()
+    func promptToAssociateSSID(_ ssid: String)
 }
 

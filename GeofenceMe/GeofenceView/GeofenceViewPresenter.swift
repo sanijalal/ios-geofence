@@ -30,7 +30,6 @@ class GeofenceViewPresenter {
     }
     
     func getData() {
-        viewModel.currentSSIDName = wifiService.getWiFiSsid()
         startLocationDetection()
         retrieveGeofenceInfo()
     }
@@ -43,12 +42,46 @@ class GeofenceViewPresenter {
         locationService.stopLocationDetection()
     }
     
-    var isInGeofence: Bool {
+    func checkSSIDAssociation() {
         guard let geofence = viewModel.geofenceInfo else {
-            return false
+            return
+        }
+
+        if let currentSSID = wifiService.getWiFiSsid() {
+            viewModel.currentSSIDName = currentSSID
+            if (geofence.ssid == nil) {
+                delegate?.promptToAssociateSSID(currentSSID)
+            } else {
+                delegate?.viewNeedsUpdate()
+            }
+        }
+    }
+    
+    func updateCurrentGeofenceWithCurrentSSID() {
+        guard var geofence = viewModel.geofenceInfo, let ssid = viewModel.currentSSIDName else {
+            return
         }
         
-        return GeofenceCheckService.isGeofenceInLocation(geofence: geofence, latitude: viewModel.latitude, longitude: viewModel.longitude)
+        geofence.ssid = ssid
+        geofenceService.deleteGeofence()
+        geofenceService.saveGeofence(geofence)
+        getData()
+    }
+    
+    var isInGeofence: GeofenceLocationStatus {
+        guard let geofence = viewModel.geofenceInfo else {
+            return .Outside
+        }
+        
+        if let ssid = geofence.ssid {
+            if ssid == viewModel.currentSSIDName {
+                return .InsideViaSSID
+            }
+        }
+        
+        let isLocationInside = GeofenceCheckService.isGeofenceInLocation(geofence: geofence, latitude: viewModel.latitude, longitude: viewModel.longitude)
+        
+        return isLocationInside ? .InsideViaLocation : .Outside
     }
     
     var geofenceInfo: GeofenceInfo? {
@@ -73,11 +106,13 @@ class GeofenceViewPresenter {
     
     var insideOutsideLabelString: String {
         if (isGeofenceAvailable == false) { return "" }
-        
-        if (isInGeofence) {
-            return "You are inside the geofence."
-        } else {
+        switch isInGeofence {
+        case .Outside:
             return "You are outside the geofence."
+        case .InsideViaLocation:
+            return "You are inside the geofence."
+        case .InsideViaSSID:
+            return "You are inside the geofence via wi-fi association."
         }
     }
     
@@ -87,7 +122,12 @@ class GeofenceViewPresenter {
     
     var insideOutsideColorName: String {
         if (isGeofenceAvailable == false) { return "NoGeofenceColor" }
-        return isInGeofence ? "HasGeofenceColor" : "NoGeofenceColor"
+        switch isInGeofence {
+        case .Outside:
+            return "NoGeofenceColor"
+        case .InsideViaLocation, .InsideViaSSID:
+            return "HasGeofenceColor"
+        }
     }
     
     var bottomButtonString: String {
