@@ -120,6 +120,7 @@ extension GeofenceDetailsViewController: UITableViewDataSource {
             return cell
         case .Radius:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SegmentCell", for: indexPath) as! SegmentCell
+            cell.configureCell(index: presenter.radiusSegmentIndex)
             cell.delegate = self
             return cell
         }
