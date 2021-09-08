@@ -10,7 +10,6 @@ import SystemConfiguration.CaptiveNetwork
 
 class WifiDetectorService {
     func getWiFiSsid() -> String? {
-        return "SANI"
         var ssid: String?
         if let interfaces = CNCopySupportedInterfaces() as NSArray? {
             for interface in interfaces {
