@@ -16,4 +16,8 @@ struct GeofenceDetailsViewModel {
     var notifyOnEntry: Bool = false
     var notifyOnExit: Bool = false
     var isUsingCurrentLocation = true
+    
+    var shouldHighlightName: Bool = false
+    var shouldHighlightOnEntry: Bool = false
+    var shouldHighlightOnExit: Bool = false
 }

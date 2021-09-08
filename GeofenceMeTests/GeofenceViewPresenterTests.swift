@@ -14,7 +14,7 @@ class GeofenceViewPresenterTests: XCTestCase {
     private let defaultLongitude: Double = 24
     private let defaultLatitude: Double = 24
     private let defaultSSIDName = "cekodok"
-    private let defaultRadius = 10
+    private let defaultRadius = 10.0
 
     private func defaultGeofenceInfo() -> GeofenceInfo {
         return GeofenceInfo(latitude: defaultLatitude,
@@ -65,7 +65,7 @@ class GeofenceViewPresenterTests: XCTestCase {
     func testGeofenceIsReturnedWhenGeofenceStorageHasGeofenceInfo() {
         let latitudeToTest: Double = 12
         let longitudeToTest: Double = 14
-        let radiusToTest = 243
+        let radiusToTest: Double = 243.0
         let ssidToTest = "Wax"
         let name = "Namaku"
         let onExit = true

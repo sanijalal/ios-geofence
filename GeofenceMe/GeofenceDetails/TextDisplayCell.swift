@@ -12,19 +12,16 @@ class TextDisplayCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var valueLabel: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    func configureCell(name: String, value: String) {
+    func configureCell(name: String, value: String, isHighlighted: Bool) {
         nameLabel.text = name
         valueLabel.text = value
+        
+        if (isHighlighted == true) {
+            nameLabel.textColor = .systemRed
+        } else {
+            nameLabel.textColor = .label
+        }
     }
     
 }

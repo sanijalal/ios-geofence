@@ -40,7 +40,7 @@ class DetailTextInputPresenterTests: XCTestCase {
     
     func testSavePresenterCallsPopMethodInAppCoordinator() {
         let presenter = defaultPresenter()
-        let coordinatorSpy = AppCoordinatingSpy()
+        let coordinatorSpy = GeofenceDetailsCoordinatingSpy()
         presenter.coordinator = coordinatorSpy
         
         let countBefore = coordinatorSpy.popDetailCalledCount

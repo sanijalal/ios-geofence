@@ -26,14 +26,24 @@ class SwitchCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(label: String, value: Bool, type: GeofenceDetailType) {
+    func configureCell(label: String, value: Bool, type: GeofenceDetailType, isHighlighted: Bool) {
         nameLabel.text = label
         cellSwitch.setOn(value, animated: false)
         detailType = type
+        
+        updateLabelColor(isHighlighted: isHighlighted)
     }
     
-    
+    func updateLabelColor(isHighlighted: Bool) {
+        if (isHighlighted == true) {
+            nameLabel.textColor = .systemRed
+        } else {
+            nameLabel.textColor = .label
+        }
+    }
+
     @IBAction func valueChanged(_ sender: UISwitch) {
+        nameLabel.textColor = .label
         if let detailType = detailType {
             delegate?.detailChanged(detail: detailType, value: sender.isOn)
         }

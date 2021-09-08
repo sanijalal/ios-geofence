@@ -17,13 +17,19 @@ class GeofenceDetailsViewPresenter {
     private var locationService: LocationServiceProviding
     private var geofenceService: GeofenceStorageProviding
     
-    init(viewModel: GeofenceDetailsViewModel = GeofenceDetailsViewModel(), locationService: LocationServiceProvider = LocationServiceProvider(), geofenceService: GeofenceStorageProviding = GeofenceStorageService()) {
+    init(viewModel: GeofenceDetailsViewModel = GeofenceDetailsViewModel(), locationService: LocationServiceProviding = LocationServiceProvider(), geofenceService: GeofenceStorageProviding = GeofenceStorageService()) {
         self.locationService = locationService
         self.geofenceService = geofenceService
         self.viewModel = viewModel
         self.locationService.delegate = self
     }
     
+    func setupData() {
+        if (viewModel.name == "") {
+            viewModel.name = DefaultNameGenerator.create()
+        }
+    }
+
     var details: [GeofenceDetailType] {
         self.models
     }
@@ -38,6 +44,18 @@ class GeofenceDetailsViewPresenter {
     
     var notifyOnExit: Bool {
         viewModel.notifyOnExit
+    }
+    
+    var highlightName: Bool {
+        viewModel.shouldHighlightName
+    }
+    
+    var highlightOnEntry: Bool {
+        viewModel.shouldHighlightOnEntry
+    }
+    
+    var highlightOnExit: Bool {
+        viewModel.shouldHighlightOnExit
     }
     
     var radiusSegmentIndex: Int {
@@ -82,10 +100,12 @@ class GeofenceDetailsViewPresenter {
     
     func updateOnEntryMonitoring(value: Bool) {
         viewModel.notifyOnEntry = value
+        updateHighlightsForValidation()
     }
     
     func updateOnExitMonitoring(value: Bool) {
         viewModel.notifyOnExit = value
+        updateHighlightsForValidation()
     }
     
     var coordinate: CLLocationCoordinate2D {
@@ -103,6 +123,7 @@ class GeofenceDetailsViewPresenter {
         } else {
             viewModel.name = ""
         }
+        updateHighlightsForValidation()
     }
     
     func nameFieldSelected() {
@@ -110,6 +131,12 @@ class GeofenceDetailsViewPresenter {
     }
     
     func saveButtonPressed() {
+        let validationStatus = validateData()
+        if (validationStatus != .Pass) {
+            delegate?.dataNotValid(status: validationStatus)
+            return
+        }
+        
         let geofence = GeofenceInfo(latitude: viewModel.latitude,
                                     longitude: viewModel.longitude,
                                     radius: viewModel.radius,
@@ -119,6 +146,38 @@ class GeofenceDetailsViewPresenter {
                                     ssid: viewModel.associatedSSID)
         geofenceService.saveGeofence(geofence)
         coordinator?.saveButtonPressed()
+    }
+    
+    private func updateHighlightsForValidation() {
+        if (viewModel.notifyOnEntry == false && viewModel.notifyOnExit == false) {
+            viewModel.shouldHighlightOnExit = true
+            viewModel.shouldHighlightOnEntry = true
+        } else {
+            viewModel.shouldHighlightOnExit = false
+            viewModel.shouldHighlightOnEntry = false
+        }
+        
+        if (viewModel.name == "") {
+            viewModel.shouldHighlightName = true
+        } else {
+            viewModel.shouldHighlightName = false
+        }
+        
+        delegate?.refreshHighlights()
+    }
+    
+    func validateData() -> GeofenceDetailValidationStatus {
+        updateHighlightsForValidation()
+        
+        if (viewModel.notifyOnEntry == false && viewModel.notifyOnExit == false) {
+            return .NoEntryExit
+        }
+        
+        if (viewModel.name == "") {
+            return .NoName
+        }
+        
+        return .Pass
     }
 }
 

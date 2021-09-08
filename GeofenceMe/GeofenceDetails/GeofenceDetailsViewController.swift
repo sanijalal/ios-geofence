@@ -43,6 +43,7 @@ class GeofenceDetailsViewController: UIViewController {
         let coordinate = CLLocationCoordinate2D(latitude: presenter.coordinate.latitude, longitude: presenter.coordinate.longitude)
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: presenter.mapRange, longitudinalMeters: presenter.mapRange)
         mapView.setRegion(region, animated: false)
+        presenter.setupData()
         presenter.delegate = self
         presenter.updateSegmentIndex(index: presenter.radiusSegmentIndex)
     }
@@ -103,18 +104,19 @@ extension GeofenceDetailsViewController: UITableViewDataSource {
         case .Name, .Location:
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextDisplayCell", for: indexPath) as! TextDisplayCell
             if detail == .Name {
-                cell.configureCell(name: "Name", value: presenter.name)
+                cell.configureCell(name: "Name", value: presenter.name, isHighlighted: presenter.highlightName)
             } else if detail == .Location {
-                cell.configureCell(name: "Location", value: "Current Location")
+                cell.configureCell(name: "Location", value: "Current Location", isHighlighted: false)
             }
             return cell
         case .OnEntry, .OnExit:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
             if detail == .OnEntry {
-                cell.configureCell(label: "On Entry", value: presenter.notifyOnEntry, type: detail)
+                cell.configureCell(label: "On Entry", value: presenter.notifyOnEntry, type: detail, isHighlighted: presenter.highlightOnEntry)
             } else if detail == .OnExit {
-                cell.configureCell(label: "On Exit", value: presenter.notifyOnExit, type: detail)
+                cell.configureCell(label: "On Exit", value: presenter.notifyOnExit, type: detail, isHighlighted: presenter.highlightOnExit)
             }
+            cell.delegate = self
             return cell
         case .Radius:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SegmentCell", for: indexPath) as! SegmentCell
@@ -141,6 +143,17 @@ extension GeofenceDetailsViewController: SwitchCellDelegate {
 }
 
 extension GeofenceDetailsViewController: GeofenceDetailsPresenterDelegate {
+    func dataNotValid(status: GeofenceDetailValidationStatus) {
+        let alert = UIAlertController(title: "Geofence data not valid",
+                                      message: "Please ensure data is valid to create a geofence. You will need a title and either on entry or on exit option is selected.",
+                                      preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alert.addAction(okButton)
+        self.present(alert, animated: true) {  
+            self.tableView.reloadData()
+        }
+    }
+    
     func locationUpdated(location: CLLocation) {
         let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: presenter.mapRange, longitudinalMeters: presenter.mapRange)
         mapView.setRegion(region, animated: true)
@@ -154,6 +167,22 @@ extension GeofenceDetailsViewController: GeofenceDetailsPresenterDelegate {
     
     func updateFenceRegion(location: CLLocationCoordinate2D, radius: Double) {
         changeFenceRange(latitude: location.latitude, longitude: location.longitude, fenceRadius: radius)
+    }
+    
+    func refreshHighlights() {
+        // Why are we not using tableview.reloadData here? Because if we do, the switch toggle animation won't be smooth.
+        if let indexPaths = tableView.indexPathsForVisibleRows {
+            for path in indexPaths {
+                let cell = tableView.cellForRow(at: path)
+                if let switchCell = cell as? SwitchCell {
+                    let detail = presenter.details[path.row]
+                    let highlight = detail == .OnEntry ? presenter.highlightOnEntry : presenter.highlightOnExit
+                    switchCell.updateLabelColor(isHighlighted: highlight)
+                } else {
+                    tableView.reloadRows(at: [path], with: .none)
+                }
+            }
+        }
     }
 }
 

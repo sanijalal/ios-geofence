@@ -75,6 +75,11 @@
 		22D6E29E26E7786F0075469A /* GeofenceDetailsCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E29D26E7786F0075469A /* GeofenceDetailsCoordinating.swift */; };
 		22D6E2A026E7A8CA0075469A /* GeofenceDetailsParentCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E29F26E7A8CA0075469A /* GeofenceDetailsParentCoordinating.swift */; };
 		22D6E2A226E7A9590075469A /* GeofenceDetailsResponding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E2A126E7A9590075469A /* GeofenceDetailsResponding.swift */; };
+		22D6E2A526E87ED90075469A /* DefaultNameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E2A426E87ED90075469A /* DefaultNameGenerator.swift */; };
+		22D6E2A726E880820075469A /* GeofenceDetailValidationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E2A626E880820075469A /* GeofenceDetailValidationStatus.swift */; };
+		22D6E2A926E88ADF0075469A /* GeofenceDetailsCoordinatingSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E2A826E88ADF0075469A /* GeofenceDetailsCoordinatingSpy.swift */; };
+		22D6E2AB26E88E000075469A /* GeofenceDetailsViewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E2AA26E88E000075469A /* GeofenceDetailsViewPresenterTests.swift */; };
+		22D6E2AD26E8919C0075469A /* GeofenceDetailsPresenterDelegateTestSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E2AC26E8919C0075469A /* GeofenceDetailsPresenterDelegateTestSpy.swift */; };
 		E3E4A1BA26D9E3FD00A2D818 /* GeofenceViewPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E4A1B926D9E3FD00A2D818 /* GeofenceViewPresenterDelegate.swift */; };
 		E3E4A1BC26DA488B00A2D818 /* GeofenceCheckServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E4A1BB26DA488B00A2D818 /* GeofenceCheckServiceTests.swift */; };
 		E3E4A1BE26DA521500A2D818 /* GeofenceViewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E4A1BD26DA521500A2D818 /* GeofenceViewPresenterTests.swift */; };
@@ -174,6 +179,11 @@
 		22D6E29D26E7786F0075469A /* GeofenceDetailsCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceDetailsCoordinating.swift; sourceTree = "<group>"; };
 		22D6E29F26E7A8CA0075469A /* GeofenceDetailsParentCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceDetailsParentCoordinating.swift; sourceTree = "<group>"; };
 		22D6E2A126E7A9590075469A /* GeofenceDetailsResponding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceDetailsResponding.swift; sourceTree = "<group>"; };
+		22D6E2A426E87ED90075469A /* DefaultNameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNameGenerator.swift; sourceTree = "<group>"; };
+		22D6E2A626E880820075469A /* GeofenceDetailValidationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceDetailValidationStatus.swift; sourceTree = "<group>"; };
+		22D6E2A826E88ADF0075469A /* GeofenceDetailsCoordinatingSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceDetailsCoordinatingSpy.swift; sourceTree = "<group>"; };
+		22D6E2AA26E88E000075469A /* GeofenceDetailsViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceDetailsViewPresenterTests.swift; sourceTree = "<group>"; };
+		22D6E2AC26E8919C0075469A /* GeofenceDetailsPresenterDelegateTestSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceDetailsPresenterDelegateTestSpy.swift; sourceTree = "<group>"; };
 		E3E4A1B926D9E3FD00A2D818 /* GeofenceViewPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceViewPresenterDelegate.swift; sourceTree = "<group>"; };
 		E3E4A1BB26DA488B00A2D818 /* GeofenceCheckServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceCheckServiceTests.swift; sourceTree = "<group>"; };
 		E3E4A1BD26DA521500A2D818 /* GeofenceViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceViewPresenterTests.swift; sourceTree = "<group>"; };
@@ -228,6 +238,7 @@
 		22879E8E26D3CB1600682651 /* GeofenceMe */ = {
 			isa = PBXGroup;
 			children = (
+				22D6E2A326E87ECB0075469A /* DefaultName */,
 				22D6E29426E74FEE0075469A /* DetailTextInput */,
 				22D6E25B26E5FFEE0075469A /* GeofenceDetails */,
 				22D6E24D26E1D9090075469A /* GeofenceMe.entitlements */,
@@ -264,6 +275,9 @@
 				22D6E24326DFBBE10075469A /* WelcomeViewPresenterTests.swift */,
 				22D6E24526DFBF600075469A /* AppCoordinatingSpy.swift */,
 				22D6E29926E756EF0075469A /* DetailTextInputPresenterTests.swift */,
+				22D6E2A826E88ADF0075469A /* GeofenceDetailsCoordinatingSpy.swift */,
+				22D6E2AA26E88E000075469A /* GeofenceDetailsViewPresenterTests.swift */,
+				22D6E2AC26E8919C0075469A /* GeofenceDetailsPresenterDelegateTestSpy.swift */,
 			);
 			path = GeofenceMeTests;
 			sourceTree = "<group>";
@@ -403,6 +417,7 @@
 				22D6E28A26E71F310075469A /* SwitchCellDelegate.swift */,
 				22D6E28C26E72AB30075469A /* GeofenceDetailsPresenterDelegate.swift */,
 				22D6E2A126E7A9590075469A /* GeofenceDetailsResponding.swift */,
+				22D6E2A626E880820075469A /* GeofenceDetailValidationStatus.swift */,
 			);
 			path = GeofenceDetails;
 			sourceTree = "<group>";
@@ -416,6 +431,14 @@
 				22D6E29726E753090075469A /* DetailTextViewControllerResponding.swift */,
 			);
 			path = DetailTextInput;
+			sourceTree = "<group>";
+		};
+		22D6E2A326E87ECB0075469A /* DefaultName */ = {
+			isa = PBXGroup;
+			children = (
+				22D6E2A426E87ED90075469A /* DefaultNameGenerator.swift */,
+			);
+			path = DefaultName;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -566,6 +589,7 @@
 				22D6E29626E750370075469A /* DetailTextInputPresenter.swift in Sources */,
 				22D6E29826E753090075469A /* DetailTextViewControllerResponding.swift in Sources */,
 				22D6E2A226E7A9590075469A /* GeofenceDetailsResponding.swift in Sources */,
+				22D6E2A726E880820075469A /* GeofenceDetailValidationStatus.swift in Sources */,
 				2297F27026DF2CA600BF241C /* GeofenceMonitor.swift in Sources */,
 				22879EDB26D612F000682651 /* AddGeofenceViewPresenterDelegate.swift in Sources */,
 				22D6E27726E60EC30075469A /* GeofenceDetailsViewPresenter.swift in Sources */,
@@ -606,6 +630,7 @@
 				22D6E28526E621400075469A /* GeofenceDetailType.swift in Sources */,
 				22879EF726D7891600682651 /* WifiDetectorService.swift in Sources */,
 				22879E9226D3CB1600682651 /* SceneDelegate.swift in Sources */,
+				22D6E2A526E87ED90075469A /* DefaultNameGenerator.swift in Sources */,
 				22D6E27426E60C4F0075469A /* SegmentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -615,6 +640,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3E4A1C026DA655D00A2D818 /* LocationServiceMock.swift in Sources */,
+				22D6E2AB26E88E000075469A /* GeofenceDetailsViewPresenterTests.swift in Sources */,
 				E3E4A1BC26DA488B00A2D818 /* GeofenceCheckServiceTests.swift in Sources */,
 				E3E4A1BE26DA521500A2D818 /* GeofenceViewPresenterTests.swift in Sources */,
 				22879EEA26D6308900682651 /* GeofenceStorageServiceTests.swift in Sources */,
@@ -623,6 +649,8 @@
 				22D6E24426DFBBE10075469A /* WelcomeViewPresenterTests.swift in Sources */,
 				22D6E24626DFBF600075469A /* AppCoordinatingSpy.swift in Sources */,
 				22D6E29A26E756EF0075469A /* DetailTextInputPresenterTests.swift in Sources */,
+				22D6E2AD26E8919C0075469A /* GeofenceDetailsPresenterDelegateTestSpy.swift in Sources */,
+				22D6E2A926E88ADF0075469A /* GeofenceDetailsCoordinatingSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,4 +12,6 @@ protocol GeofenceDetailsPresenterDelegate: AnyObject {
     func locationUpdated(location: CLLocation)
     func updateZoomAtLocation(location: CLLocationCoordinate2D, zoom: Double)
     func updateFenceRegion(location: CLLocationCoordinate2D, radius: Double)
+    func dataNotValid(status: GeofenceDetailValidationStatus)
+    func refreshHighlights()
 }

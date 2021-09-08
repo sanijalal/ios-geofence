@@ -10,7 +10,7 @@ import XCTest
 
 class GeofenceCheckServiceTests: XCTestCase {
 
-    private func createGeofenceInfo(latitude: Double = 24, longitude: Double = 26, radius: Int = 1000, ssid: String? = nil) -> GeofenceInfo {
+    private func createGeofenceInfo(latitude: Double = 24, longitude: Double = 26, radius: Double = 1000, ssid: String? = nil) -> GeofenceInfo {
         return GeofenceInfo(latitude: latitude,
                             longitude: longitude,
                             radius: radius,
