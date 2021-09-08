@@ -9,7 +9,7 @@ import Foundation
 
 class DetailTextInputPresenter {
     
-    weak var coordinator: AppCoordinating?
+    weak var coordinator: GeofenceDetailsCoordinating?
     private let label: String
     private var value: String?
     

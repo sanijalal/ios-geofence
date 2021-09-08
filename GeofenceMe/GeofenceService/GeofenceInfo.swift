@@ -11,7 +11,7 @@ struct GeofenceInfo: Codable {
     let latitude: Double
     let longitude: Double
     
-    let radius: Int
+    let radius: Double
     
     var monitorOnExit: Bool
     var monitorOnEntry: Bool

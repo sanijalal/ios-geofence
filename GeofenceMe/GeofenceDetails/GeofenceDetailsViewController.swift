@@ -68,6 +68,10 @@ class GeofenceDetailsViewController: UIViewController {
         mapView.addAnnotation(annotation)
         changeFenceRange(latitude: latitude, longitude: longitude, fenceRadius: radius)
     }
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        presenter.saveButtonPressed()
+    }
 }
 
 extension GeofenceDetailsViewController: UITableViewDelegate {

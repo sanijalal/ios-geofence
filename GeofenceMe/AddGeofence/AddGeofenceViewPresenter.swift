@@ -73,7 +73,7 @@ class AddGeofenceViewPresenter {
     func saveGeofence() {
         let geofence = GeofenceInfo(latitude: latitude,
                                     longitude: longitude,
-                                    radius: Int(currentFenceRange),
+                                    radius: currentFenceRange,
                                     monitorOnExit: true,
                                     monitorOnEntry: true,
                                     geofenceName: "Massasuchets")

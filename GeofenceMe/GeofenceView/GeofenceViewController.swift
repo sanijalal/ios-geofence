@@ -101,3 +101,10 @@ extension GeofenceViewController: MKMapViewDelegate {
         return circleRenderer
     }
 }
+
+extension GeofenceViewController: GeofenceDetailsResponding {
+    func geofenceDetailsDismissed() {
+        presenter.getData()
+        updateView()
+    }
+}

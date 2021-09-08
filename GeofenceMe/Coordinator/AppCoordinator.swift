@@ -14,6 +14,7 @@ class AppCoordinator: AppCoordinating {
     
     var childCoordinators: [Coordinator] = [Coordinator]()
     var navigationController: UINavigationController
+    var presentedCoordinator: Coordinator?
     
     init(navigationController: UINavigationController, locationService: LocationServiceProviding = LocationServiceProvider()) {
         self.navigationController = navigationController
@@ -62,11 +63,15 @@ class AppCoordinator: AppCoordinating {
     }
     
     func presentAddGeofence() {
-        let presenter = AddGeofenceViewPresenter()
-        let vc = AddGeofenceViewController(presenter: presenter)
-        presenter.coordinator = self
         
-        self.navigationController.viewControllers.last?.present(vc, animated: true, completion: {
+        let navigationController = UINavigationController()
+        navigationController.modalPresentationStyle = .fullScreen
+        
+        let coordinator = GeofenceDetailsCoordinator(navigationController: navigationController)
+        coordinator.start()
+        presentedCoordinator = coordinator
+        
+        self.navigationController.viewControllers.last?.present(navigationController, animated: true, completion: {
         })
     }
     
@@ -84,24 +89,13 @@ class AppCoordinator: AppCoordinating {
         if let topVC = navigationController.topViewController as? ViewControllerAppEventResponding {
             topVC.appDidBecomeActive()
         }
-    }
-    
-    func pushDetail(label: String, value: String?) {
-        let detailPresenter = DetailTextInputPresenter(label: label, value: value)
-        let detailVC = DetailTextInputViewController(presenter: detailPresenter)
-        
-        detailPresenter.coordinator = self
-        
-        navigationController.pushViewController(detailVC, animated: true)
-    }
-    
-    func popDetail(label: String, value: String?) {
-        navigationController.popViewController(animated: true)
-        
-        if let vc = navigationController.viewControllers.last as? DetailTextViewControllerResponding {
-            vc.updatedTextValue(label: label, value: value)
+    }    
+}
+
+extension AppCoordinator: GeofenceDetailsParentCoordinating {
+    func geofenceDetailsDidSave() {
+        if let topVC = navigationController.topViewController as? GeofenceDetailsResponding {
+            topVC.geofenceDetailsDismissed()
         }
     }
-    
-    
 }

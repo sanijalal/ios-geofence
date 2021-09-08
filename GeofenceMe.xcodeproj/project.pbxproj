@@ -71,6 +71,10 @@
 		22D6E29626E750370075469A /* DetailTextInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E29526E750370075469A /* DetailTextInputPresenter.swift */; };
 		22D6E29826E753090075469A /* DetailTextViewControllerResponding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E29726E753090075469A /* DetailTextViewControllerResponding.swift */; };
 		22D6E29A26E756EF0075469A /* DetailTextInputPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E29926E756EF0075469A /* DetailTextInputPresenterTests.swift */; };
+		22D6E29C26E778580075469A /* GeofenceDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E29B26E778580075469A /* GeofenceDetailsCoordinator.swift */; };
+		22D6E29E26E7786F0075469A /* GeofenceDetailsCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E29D26E7786F0075469A /* GeofenceDetailsCoordinating.swift */; };
+		22D6E2A026E7A8CA0075469A /* GeofenceDetailsParentCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E29F26E7A8CA0075469A /* GeofenceDetailsParentCoordinating.swift */; };
+		22D6E2A226E7A9590075469A /* GeofenceDetailsResponding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E2A126E7A9590075469A /* GeofenceDetailsResponding.swift */; };
 		E3E4A1BA26D9E3FD00A2D818 /* GeofenceViewPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E4A1B926D9E3FD00A2D818 /* GeofenceViewPresenterDelegate.swift */; };
 		E3E4A1BC26DA488B00A2D818 /* GeofenceCheckServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E4A1BB26DA488B00A2D818 /* GeofenceCheckServiceTests.swift */; };
 		E3E4A1BE26DA521500A2D818 /* GeofenceViewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E4A1BD26DA521500A2D818 /* GeofenceViewPresenterTests.swift */; };
@@ -166,6 +170,10 @@
 		22D6E29526E750370075469A /* DetailTextInputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextInputPresenter.swift; sourceTree = "<group>"; };
 		22D6E29726E753090075469A /* DetailTextViewControllerResponding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextViewControllerResponding.swift; sourceTree = "<group>"; };
 		22D6E29926E756EF0075469A /* DetailTextInputPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextInputPresenterTests.swift; sourceTree = "<group>"; };
+		22D6E29B26E778580075469A /* GeofenceDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceDetailsCoordinator.swift; sourceTree = "<group>"; };
+		22D6E29D26E7786F0075469A /* GeofenceDetailsCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceDetailsCoordinating.swift; sourceTree = "<group>"; };
+		22D6E29F26E7A8CA0075469A /* GeofenceDetailsParentCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceDetailsParentCoordinating.swift; sourceTree = "<group>"; };
+		22D6E2A126E7A9590075469A /* GeofenceDetailsResponding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceDetailsResponding.swift; sourceTree = "<group>"; };
 		E3E4A1B926D9E3FD00A2D818 /* GeofenceViewPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceViewPresenterDelegate.swift; sourceTree = "<group>"; };
 		E3E4A1BB26DA488B00A2D818 /* GeofenceCheckServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceCheckServiceTests.swift; sourceTree = "<group>"; };
 		E3E4A1BD26DA521500A2D818 /* GeofenceViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceViewPresenterTests.swift; sourceTree = "<group>"; };
@@ -356,6 +364,9 @@
 				2297F27E26DF8F6900BF241C /* AppCoordinator.swift */,
 				2297F27F26DF8F6900BF241C /* Coordinator.swift */,
 				22D6E24726DFBF7D0075469A /* AppCoordinating.swift */,
+				22D6E29B26E778580075469A /* GeofenceDetailsCoordinator.swift */,
+				22D6E29D26E7786F0075469A /* GeofenceDetailsCoordinating.swift */,
+				22D6E29F26E7A8CA0075469A /* GeofenceDetailsParentCoordinating.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -391,6 +402,7 @@
 				22D6E28826E71C0E0075469A /* RadiusOption.swift */,
 				22D6E28A26E71F310075469A /* SwitchCellDelegate.swift */,
 				22D6E28C26E72AB30075469A /* GeofenceDetailsPresenterDelegate.swift */,
+				22D6E2A126E7A9590075469A /* GeofenceDetailsResponding.swift */,
 			);
 			path = GeofenceDetails;
 			sourceTree = "<group>";
@@ -553,6 +565,7 @@
 				22879EE226D61A4F00682651 /* GeofenceInfo.swift in Sources */,
 				22D6E29626E750370075469A /* DetailTextInputPresenter.swift in Sources */,
 				22D6E29826E753090075469A /* DetailTextViewControllerResponding.swift in Sources */,
+				22D6E2A226E7A9590075469A /* GeofenceDetailsResponding.swift in Sources */,
 				2297F27026DF2CA600BF241C /* GeofenceMonitor.swift in Sources */,
 				22879EDB26D612F000682651 /* AddGeofenceViewPresenterDelegate.swift in Sources */,
 				22D6E27726E60EC30075469A /* GeofenceDetailsViewPresenter.swift in Sources */,
@@ -562,13 +575,16 @@
 				22879EED26D634F400682651 /* GeofenceViewController.swift in Sources */,
 				22879EDE26D619F000682651 /* GeofenceStorageService.swift in Sources */,
 				22879EC326D4AECC00682651 /* WelcomeViewPresenter.swift in Sources */,
+				22D6E29C26E778580075469A /* GeofenceDetailsCoordinator.swift in Sources */,
 				22879ED326D4C66100682651 /* AddGeofenceViewController.swift in Sources */,
 				22879EE826D62DD500682651 /* AddGeofenceViewModel.swift in Sources */,
 				22879E9426D3CB1600682651 /* WelcomeViewController.swift in Sources */,
 				22D6E28126E619A00075469A /* GeofenceDetailsCellSegment.swift in Sources */,
 				22D6E28726E718A90075469A /* GeofenceDetailsViewModel.swift in Sources */,
+				22D6E29E26E7786F0075469A /* GeofenceDetailsCoordinating.swift in Sources */,
 				22D6E27026E608710075469A /* SwitchCell.swift in Sources */,
 				22D6E27D26E616F80075469A /* GeofenceDetailsCellTextModel.swift in Sources */,
+				22D6E2A026E7A8CA0075469A /* GeofenceDetailsParentCoordinating.swift in Sources */,
 				2297F28026DF8F6900BF241C /* AppCoordinator.swift in Sources */,
 				22879E9026D3CB1600682651 /* AppDelegate.swift in Sources */,
 				22879EC826D4B03000682651 /* LocationServiceProvider.swift in Sources */,

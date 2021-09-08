@@ -9,16 +9,17 @@ import Foundation
 import CoreLocation
 
 class GeofenceDetailsViewPresenter {
-    weak var coordinator: AppCoordinator?
+    weak var coordinator: GeofenceDetailsCoordinating?
     
     private var viewModel: GeofenceDetailsViewModel
     private let models: [GeofenceDetailType] = [.Name, .Location, .OnEntry, .OnExit, .Radius]
     weak var delegate: GeofenceDetailsPresenterDelegate?
     private var locationService: LocationServiceProviding
+    private var geofenceService: GeofenceStorageProviding
     
-    
-    init(viewModel: GeofenceDetailsViewModel = GeofenceDetailsViewModel(), locationService: LocationServiceProvider = LocationServiceProvider()) {
+    init(viewModel: GeofenceDetailsViewModel = GeofenceDetailsViewModel(), locationService: LocationServiceProvider = LocationServiceProvider(), geofenceService: GeofenceStorageProviding = GeofenceStorageService()) {
         self.locationService = locationService
+        self.geofenceService = geofenceService
         self.viewModel = viewModel
         self.locationService.delegate = self
     }
@@ -106,6 +107,18 @@ class GeofenceDetailsViewPresenter {
     
     func nameFieldSelected() {
         coordinator?.pushDetail(label: "Name", value: viewModel.name)
+    }
+    
+    func saveButtonPressed() {
+        let geofence = GeofenceInfo(latitude: viewModel.latitude,
+                                    longitude: viewModel.longitude,
+                                    radius: viewModel.radius,
+                                    monitorOnExit: viewModel.notifyOnExit,
+                                    monitorOnEntry: viewModel.notifyOnEntry,
+                                    geofenceName: viewModel.name,
+                                    ssid: viewModel.associatedSSID)
+        geofenceService.saveGeofence(geofence)
+        coordinator?.saveButtonPressed()
     }
 }
 
