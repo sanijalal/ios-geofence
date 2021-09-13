@@ -150,7 +150,7 @@ extension GeofenceDetailsViewController: SwitchCellDelegate {
 
 extension GeofenceDetailsViewController: GeofenceDetailsPresenterDelegate {
     func dataNotValid(status: GeofenceDetailValidationStatus) {
-        let alert = UIAlertController(title: "Geofence data not valid",
+        let alert = UIAlertController(title: "Invalid geofence data",
                                       message: "Please ensure data is valid to create a geofence. You will need a title and either on entry or on exit option is selected.",
                                       preferredStyle: .alert)
         let okButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
