@@ -102,11 +102,13 @@ extension GeofenceViewController: GeofenceViewPresenterDelegate {
         let yesAction = UIAlertAction(title: "Yes", style: .default) { action in
             self.presenter.updateCurrentGeofenceWithCurrentSSID()
         }
+        
         let noAction = UIAlertAction(title: "No", style: .default) { action in
             
         }
-        alert.addAction(yesAction)
         alert.addAction(noAction)
+        alert.addAction(yesAction)
+        alert.preferredAction = yesAction
         self.present(alert, animated: true) {
             
         }
