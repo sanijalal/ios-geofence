@@ -50,18 +50,6 @@ class AppCoordinator: AppCoordinating {
         self.navigationController.setViewControllers([vc], animated: true)
     }
     
-    func presentEditGeofence() {
-        let presenter = AddGeofenceViewPresenter()
-        let vc = AddGeofenceViewController(presenter: presenter)
-        presenter.coordinator = self
-        
-        vc.modalPresentationStyle = .fullScreen
-        
-        self.navigationController.topViewController?.present(vc, animated: true, completion: {
-            
-        })
-    }
-    
     func presentAddGeofence() {
         
         let navigationController = UINavigationController()
