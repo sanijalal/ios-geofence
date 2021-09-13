@@ -10,6 +10,10 @@ import CoreLocation
 @testable import GeofenceMe
 
 class LocationServiceMock: LocationServiceProviding {
+    func stopMonitorAllGeofences() {
+        
+    }
+    
     var locationPermissionRequested = false
     
     func startMonitoring(geofence: GeofenceInfo) {
