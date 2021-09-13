@@ -80,6 +80,8 @@ class GeofenceDetailsViewPresenter {
         var extendRadius = 100.0
         if viewModel.radius == 200 {
             extendRadius = 250.0
+        } else if viewModel.radius == 100 {
+            extendRadius = 200
         }
         return viewModel.radius + extendRadius
     }
@@ -117,6 +119,10 @@ class GeofenceDetailsViewPresenter {
     func startLocationUpdate() {
         locationService.requestLocationPermission()
         locationService.startLocationDetection()
+    }
+    
+    func stopLocationUpdate() {
+        locationService.stopLocationDetection()
     }
     
     func changeName(_ name: String?) {
