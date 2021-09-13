@@ -63,7 +63,6 @@
 		22D6E28326E61D950075469A /* SegmentCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E28226E61D950075469A /* SegmentCellDelegate.swift */; };
 		22D6E28526E621400075469A /* GeofenceDetailType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E28426E621400075469A /* GeofenceDetailType.swift */; };
 		22D6E28726E718A90075469A /* GeofenceDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E28626E718A90075469A /* GeofenceDetailsViewModel.swift */; };
-		22D6E28926E71C0E0075469A /* RadiusOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E28826E71C0E0075469A /* RadiusOption.swift */; };
 		22D6E28B26E71F310075469A /* SwitchCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E28A26E71F310075469A /* SwitchCellDelegate.swift */; };
 		22D6E28D26E72AB30075469A /* GeofenceDetailsPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E28C26E72AB30075469A /* GeofenceDetailsPresenterDelegate.swift */; };
 		22D6E29226E74DC10075469A /* DetailTextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6E29026E74DC10075469A /* DetailTextInputViewController.swift */; };
@@ -168,7 +167,6 @@
 		22D6E28226E61D950075469A /* SegmentCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCellDelegate.swift; sourceTree = "<group>"; };
 		22D6E28426E621400075469A /* GeofenceDetailType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceDetailType.swift; sourceTree = "<group>"; };
 		22D6E28626E718A90075469A /* GeofenceDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceDetailsViewModel.swift; sourceTree = "<group>"; };
-		22D6E28826E71C0E0075469A /* RadiusOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusOption.swift; sourceTree = "<group>"; };
 		22D6E28A26E71F310075469A /* SwitchCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCellDelegate.swift; sourceTree = "<group>"; };
 		22D6E28C26E72AB30075469A /* GeofenceDetailsPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceDetailsPresenterDelegate.swift; sourceTree = "<group>"; };
 		22D6E29026E74DC10075469A /* DetailTextInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextInputViewController.swift; sourceTree = "<group>"; };
@@ -240,20 +238,18 @@
 		22879E8E26D3CB1600682651 /* GeofenceMe */ = {
 			isa = PBXGroup;
 			children = (
+				22FC2B0826EF4A8900F95357 /* Screens */,
 				22D6E2A326E87ECB0075469A /* DefaultName */,
 				22D6E29426E74FEE0075469A /* DetailTextInput */,
-				22D6E25B26E5FFEE0075469A /* GeofenceDetails */,
 				22D6E24D26E1D9090075469A /* GeofenceMe.entitlements */,
 				22D6E24926E0C7340075469A /* ViewControllerAppEventsProtocol */,
 				2297F27D26DF8F6900BF241C /* Coordinator */,
 				2297F27826DF72D700BF241C /* NotificationService */,
 				22879EF826D7891E00682651 /* WifiDetector */,
-				22879EEF26D634FA00682651 /* GeofenceView */,
 				22879EDC26D619B300682651 /* GeofenceService */,
 				22879ED526D5EF4B00682651 /* MapView */,
 				22879ECC26D4BD7E00682651 /* AddGeofence */,
 				22879EC426D4AFB200682651 /* LocationService */,
-				22879EBF26D3CF5E00682651 /* WelcomeScreen */,
 				22879E8F26D3CB1600682651 /* AppDelegate.swift */,
 				22879E9126D3CB1600682651 /* SceneDelegate.swift */,
 				22879E9526D3CB1600682651 /* Main.storyboard */,
@@ -410,7 +406,6 @@
 				22D6E28026E6199F0075469A /* GeofenceDetailsCellSegment.swift */,
 				22D6E28426E621400075469A /* GeofenceDetailType.swift */,
 				22D6E28626E718A90075469A /* GeofenceDetailsViewModel.swift */,
-				22D6E28826E71C0E0075469A /* RadiusOption.swift */,
 				22D6E28C26E72AB30075469A /* GeofenceDetailsPresenterDelegate.swift */,
 				22D6E2A126E7A9590075469A /* GeofenceDetailsResponding.swift */,
 				22D6E2A626E880820075469A /* GeofenceDetailValidationStatus.swift */,
@@ -458,6 +453,16 @@
 				22D6E28226E61D950075469A /* SegmentCellDelegate.swift */,
 			);
 			path = "Cell Delegates";
+			sourceTree = "<group>";
+		};
+		22FC2B0826EF4A8900F95357 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				22D6E25B26E5FFEE0075469A /* GeofenceDetails */,
+				22879EEF26D634FA00682651 /* GeofenceView */,
+				22879EBF26D3CF5E00682651 /* WelcomeScreen */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -635,7 +640,6 @@
 				22879ECA26D4B07400682651 /* LocationServiceDelegate.swift in Sources */,
 				E3E4A1BA26D9E3FD00A2D818 /* GeofenceViewPresenterDelegate.swift in Sources */,
 				22879ED926D6124D00682651 /* AddGeofenceViewPresenter.swift in Sources */,
-				22D6E28926E71C0E0075469A /* RadiusOption.swift in Sources */,
 				22D6E2AF26E8A5FF0075469A /* GeofenceLocationStatus.swift in Sources */,
 				22879EC626D4AFC800682651 /* LocationServiceProviding.swift in Sources */,
 				22D6E24826DFBF7D0075469A /* AppCoordinating.swift in Sources */,
