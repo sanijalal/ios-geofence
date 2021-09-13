@@ -28,7 +28,7 @@
                     </constraints>
                 </mapView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yQk-bE-ax7">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="758"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voc-NM-K32">
@@ -45,10 +45,10 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="yQk-bE-ax7" secondAttribute="bottom" id="0A7-A7-BCC"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yQk-bE-ax7" secondAttribute="trailing" id="0T9-6M-haa"/>
                 <constraint firstItem="P8f-r9-Rrj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0WH-o8-HoI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="P8f-r9-Rrj" secondAttribute="trailing" id="89a-Co-fgo"/>
+                <constraint firstItem="voc-NM-K32" firstAttribute="top" secondItem="yQk-bE-ax7" secondAttribute="bottom" id="JhP-5G-ZQk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="voc-NM-K32" secondAttribute="trailing" constant="20" id="R8s-dI-a33"/>
                 <constraint firstItem="voc-NM-K32" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="UNY-Wg-rCW"/>
                 <constraint firstItem="P8f-r9-Rrj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="bkr-bw-IYr"/>
