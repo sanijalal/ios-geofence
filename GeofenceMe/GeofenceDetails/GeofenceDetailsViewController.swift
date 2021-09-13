@@ -11,6 +11,9 @@ import MapKit
 
 class GeofenceDetailsViewController: UIViewController {
     var presenter: GeofenceDetailsViewPresenter
+    let kSwitchCellIdentifier = "SwitchCell"
+    let kTextCellIdentifier = "TextDisplayCell"
+    let kSegmentCellIdentifier = "SegmentCell"
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapViewHeightConstraint: NSLayoutConstraint!
@@ -32,17 +35,14 @@ class GeofenceDetailsViewController: UIViewController {
         tableView.tableFooterView = UIView(frame: .zero)
         
         tableView.register(UINib(nibName: "TextDisplayCell", bundle: nil),
-                           forCellReuseIdentifier: "TextDisplayCell")
+                           forCellReuseIdentifier: kTextCellIdentifier)
         tableView.register(UINib(nibName: "SwitchCell", bundle: nil),
-                           forCellReuseIdentifier: "SwitchCell")
+                           forCellReuseIdentifier: kSwitchCellIdentifier)
         tableView.register(UINib(nibName: "SegmentCell", bundle: nil),
-                           forCellReuseIdentifier: "SegmentCell")
-        tableView.contentInset = UIEdgeInsets(top: 200, left: 0, bottom: 50, right: 0)
+                           forCellReuseIdentifier: kSegmentCellIdentifier)
+        tableView.contentInset = UIEdgeInsets(top: 200, left: 0, bottom: 0, right: 0)
         mapView.delegate = self
 
-        let coordinate = CLLocationCoordinate2D(latitude: presenter.coordinate.latitude, longitude: presenter.coordinate.longitude)
-        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: presenter.mapRange, longitudinalMeters: presenter.mapRange)
-        mapView.setRegion(region, animated: false)
         presenter.setupData()
         presenter.delegate = self
         presenter.updateSegmentIndex(index: presenter.radiusSegmentIndex)
@@ -51,6 +51,11 @@ class GeofenceDetailsViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         presenter.startLocationUpdate()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presenter.stopLocationUpdate()
     }
     
     private func changeFenceRange(latitude: Double, longitude: Double, fenceRadius: CLLocationDistance) {
@@ -102,7 +107,7 @@ extension GeofenceDetailsViewController: UITableViewDataSource {
         let detail = presenter.details[indexPath.row]
         switch detail {
         case .Name, .Location:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TextDisplayCell", for: indexPath) as! TextDisplayCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: kTextCellIdentifier, for: indexPath) as! TextDisplayCell
             if detail == .Name {
                 cell.configureCell(name: "Name", value: presenter.name, isHighlighted: presenter.highlightName)
             } else if detail == .Location {
@@ -110,7 +115,7 @@ extension GeofenceDetailsViewController: UITableViewDataSource {
             }
             return cell
         case .OnEntry, .OnExit:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: kSwitchCellIdentifier, for: indexPath) as! SwitchCell
             if detail == .OnEntry {
                 cell.configureCell(label: "On Entry", value: presenter.notifyOnEntry, type: detail, isHighlighted: presenter.highlightOnEntry)
             } else if detail == .OnExit {
@@ -119,7 +124,7 @@ extension GeofenceDetailsViewController: UITableViewDataSource {
             cell.delegate = self
             return cell
         case .Radius:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SegmentCell", for: indexPath) as! SegmentCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: kSegmentCellIdentifier, for: indexPath) as! SegmentCell
             cell.configureCell(index: presenter.radiusSegmentIndex)
             cell.delegate = self
             return cell
