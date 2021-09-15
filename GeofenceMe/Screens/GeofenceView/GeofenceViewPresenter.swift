@@ -65,7 +65,7 @@ class GeofenceViewPresenter {
         geofence.ssid = ssid
         geofenceService.deleteGeofence()
         geofenceService.saveGeofence(geofence)
-        
+        getData()
         delegate?.viewNeedsUpdate()
     }
     
